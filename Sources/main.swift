@@ -1,0 +1,1 @@
+print("Hello, BitBay Ticker!")
