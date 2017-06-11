@@ -1,5 +1,5 @@
 import XCTest
-@testable import BitBay-TickerCoreTests
+@testable import BitBay_TickerCoreTests
 
 XCTMain([
     testCase(TickerTests.allTests),
