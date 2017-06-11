@@ -10,7 +10,8 @@ final class TickerTests: XCTestCase {
 
         let ticker = Ticker(named: name, jsonDictionary: jsonDictionary)
         
-        XCTAssertEqual("BTCPLN", ticker.name)
+        XCTAssertEqual("BTC", ticker.baseCurrency)
+        XCTAssertEqual("PLN", ticker.counterCurrency)
         XCTAssertEqual(11273, ticker.max)
         XCTAssertEqual(10175.99, ticker.min)
         XCTAssertEqual(11273, ticker.last)

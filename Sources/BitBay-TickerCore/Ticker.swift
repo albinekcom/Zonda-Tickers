@@ -1,6 +1,14 @@
 public struct Ticker {
     
-    let name: String
+    private let name: String
+    
+    var baseCurrency: String {
+        return String(name.characters.dropLast(3))
+    }
+    
+    var counterCurrency: String {
+        return String(name.characters.dropFirst(3))
+    }
     
     let max: Double?
     let min: Double?
@@ -29,10 +37,10 @@ public struct Ticker {
 extension Ticker: CustomStringConvertible {
     
     public var description: String {
-        var desc = "Ticker \"\(name)\""
+        var desc = "Ticker \(baseCurrency)/\(counterCurrency)"
         
         if let last = last {
-            desc += ", last: \(last)"
+            desc += ", last: \(last)\t\(counterCurrency)"
         }
         
         return desc
