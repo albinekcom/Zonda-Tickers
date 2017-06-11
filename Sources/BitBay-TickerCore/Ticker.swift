@@ -1,4 +1,4 @@
-struct Ticker {
+public struct Ticker {
     
     let name: String
     
@@ -11,7 +11,7 @@ struct Ticker {
     let average: Double?
     let volume: Double?
     
-    init(named name: String, jsonDictionary: [String: Any]) {
+    public init(named name: String, jsonDictionary: [String: Any]) {
         self.name = name
         
         max = jsonDictionary["max"] as? Double
@@ -22,6 +22,20 @@ struct Ticker {
         vwap = jsonDictionary["vwap"] as? Double
         average = jsonDictionary["average"] as? Double
         volume = jsonDictionary["volume"] as? Double
+    }
+    
+}
+
+extension Ticker: CustomStringConvertible {
+    
+    public var description: String {
+        var desc = "Ticker \"\(name)\""
+        
+        if let last = last {
+            desc += ", last: \(last)"
+        }
+        
+        return desc
     }
     
 }
