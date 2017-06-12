@@ -1,14 +1,7 @@
 public struct Ticker {
     
-    private let name: String
-    
-    var baseCurrency: String {
-        return String(name.characters.dropLast(3))
-    }
-    
-    var counterCurrency: String {
-        return String(name.characters.dropFirst(3))
-    }
+    let baseCurrency: String
+    let counterCurrency: String
     
     let max: Double?
     let min: Double?
@@ -20,7 +13,8 @@ public struct Ticker {
     let volume: Double?
     
     public init(named name: String, jsonDictionary: [String: Any]) {
-        self.name = name
+        baseCurrency = String(name.characters.dropLast(3))
+        counterCurrency = String(name.characters.dropFirst(3))
         
         max = jsonDictionary["max"] as? Double
         min = jsonDictionary["min"] as? Double
