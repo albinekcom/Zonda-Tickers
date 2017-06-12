@@ -8,15 +8,9 @@ private var userArgument: String? {
     }
 }
 
-private var isValidUserArgument: Bool {
-    guard let userArgument = userArgument else { return false }
-    
-    return TickerNameValidator().isValid(name: userArgument)
-}
-
 // MARK: - Main Method
 
-if let userArgument = userArgument {
+if let userArgument = userArgument, TickerNameValidator().isValid(name: userArgument) {
     let ticker = TickerFactory.makeTicker(named: userArgument)
     
     print(ticker)
