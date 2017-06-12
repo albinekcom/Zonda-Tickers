@@ -17,7 +17,7 @@ $ swift build
 $ .build/debug/BitBay-Ticker BTCPLN
 ```
 
-### Available arguments:
+### Available arguments
 
 - `BTCPLN`
 - `BTCUSD`
