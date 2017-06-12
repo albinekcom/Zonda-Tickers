@@ -1,11 +1,23 @@
 import BitBay_TickerCore
 
-if CommandLine.arguments.count == 2 {
-    let userInput = CommandLine.arguments[1]
-    
-    if TickerNameValidator().isValid(name: userInput) {
-        let ticker = TickerFactory.makeTicker(named: userInput)
-        
-        print(ticker)
+private var userArgument: String? {
+    if CommandLine.arguments.count > 1 {
+       return CommandLine.arguments[1]
+    } else {
+        return nil
     }
+}
+
+private var isValidUserArgument: Bool {
+    guard let userArgument = userArgument else { return false }
+    
+    return TickerNameValidator().isValid(name: userArgument)
+}
+
+// MARK: - Main Method
+
+if let userArgument = userArgument {
+    let ticker = TickerFactory.makeTicker(named: userArgument)
+    
+    print(ticker)
 }
