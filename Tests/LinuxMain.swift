@@ -3,5 +3,6 @@ import XCTest
 
 XCTMain([
     testCase(TickerTests.allTests),
-    testCase(TickerNameValidatorTests.allTests)
+    testCase(TickerNameValidatorTests.allTests),
+    testCase(TickerFactoryTests.allTests)
 ])
