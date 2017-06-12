@@ -3,8 +3,8 @@ import XCTest
 
 final class TickerFactoryTests: XCTestCase {
     
-    func testMakeTicker() {
-        let ticker = TickerFactory.makeTicker(named: "BTCPLN")
+    func testMakeTickerWithCorrectName() {
+        let ticker = TickerFactory.makeTicker(named: "BTCPLN")!
         
         XCTAssertEqual("BTC", ticker.baseCurrency)
         XCTAssertEqual("PLN", ticker.counterCurrency)
@@ -12,16 +12,23 @@ final class TickerFactoryTests: XCTestCase {
         XCTAssertGreaterThan(ticker.max!, 0)
         XCTAssertGreaterThan(ticker.min!, 0)
         XCTAssertGreaterThan(ticker.last!, 0)
-        XCTAssertGreaterThan(ticker.last!, 0)
-        XCTAssertGreaterThan(ticker.last!, 0)
-        XCTAssertGreaterThan(ticker.last!, 0)
-        XCTAssertGreaterThan(ticker.last!, 0)
-        XCTAssertGreaterThan(ticker.last!, 0)
+        XCTAssertGreaterThan(ticker.bid!, 0)
+        XCTAssertGreaterThan(ticker.ask!, 0)
+        XCTAssertGreaterThan(ticker.vwap!, 0)
+        XCTAssertGreaterThan(ticker.average!, 0)
+        XCTAssertGreaterThan(ticker.volume!, 0)
+    }
+    
+    func testMakeTickerWithIncorrectName() {
+        let ticker = TickerFactory.makeTicker(named: "BTCPLNN")
+        
+        XCTAssertNil(ticker)
     }
     
     
     static var allTests = [
-        ("testMakeTicker", testMakeTicker)
+        ("testMakeTickerWithCorrectName", testMakeTickerWithCorrectName),
+        ("testMakeTickerWithIncorrectName", testMakeTickerWithIncorrectName)
     ]
     
 }
