@@ -16,3 +16,21 @@ $ cd BitBay-Ticker
 $ swift build
 $ .build/debug/BitBay-Ticker BTCPLN
 ```
+
+### Available arguments:
+
+- `BTCPLN`
+- `BTCUSD`
+- `BTCEUR`
+- `LTCPLN`
+- `LTCUSD`
+- `LTCEUR`
+- `LTCBTC`
+- `ETHPLN`
+- `ETHUSD`
+- `ETHEUR`
+- `ETHBTC`
+- `LSKPLN`
+- `LSKUSD`
+- `LSKEUR`
+- `LSKBTC`
