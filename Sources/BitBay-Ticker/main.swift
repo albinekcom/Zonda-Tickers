@@ -10,8 +10,6 @@ private var userArgument: String? {
 
 // MARK: - Main Method
 
-if let userArgument = userArgument, TickerNameValidator().isValid(name: userArgument) {
-    let ticker = TickerFactory.makeTicker(named: userArgument)
-    
+if let userArgument = userArgument, let ticker = TickerFactory.makeTicker(named: userArgument) {
     print(ticker)
 }
