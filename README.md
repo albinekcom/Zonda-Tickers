@@ -8,16 +8,16 @@ This is a command line tool to receive ticker information using [BitBay Public A
 
 ## Usage
 
-Clone this repository, build and execute with ticker name as an argument.
+Clone this repository, build and execute with ticker name as a first argument and other print arguments.
 
 ```bash
 $ git clone https://github.com/albinekcom/BitBay-Ticker.git
 $ cd BitBay-Ticker
 $ swift build
-$ .build/debug/BitBay-Ticker BTCPLN
+$ .build/debug/BitBay-Ticker BTCPLN --last --average
 ```
 
-### Available arguments
+### Available first argument
 
 - `BTCPLN`
 - `BTCUSD`
@@ -34,3 +34,14 @@ $ .build/debug/BitBay-Ticker BTCPLN
 - `LSKUSD`
 - `LSKEUR`
 - `LSKBTC`
+
+### Available print arguments
+
+- `--max`
+- `--min`
+- `--last`
+- `--bid`
+- `--ask`
+- `--vwap`
+- `--average`
+- `--volume`

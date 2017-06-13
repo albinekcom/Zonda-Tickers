@@ -1,6 +1,6 @@
 import BitBay_TickerCore
 
-private var userArgument: String? {
+private var firstUserArgument: String? {
     if CommandLine.arguments.count > 1 {
        return CommandLine.arguments[1]
     } else {
@@ -10,6 +10,8 @@ private var userArgument: String? {
 
 // MARK: - Main Method
 
-if let userArgument = userArgument, let ticker = TickerFactory.makeTicker(named: userArgument) {
-    print(ticker)
+if let firstUserArgument = firstUserArgument, let ticker = TickerFactory.makeTicker(named: firstUserArgument) {
+    let tickerDescription = ticker.description(printArguments: Array(CommandLine.arguments.dropFirst(2)))
+    
+    print(tickerDescription)
 }
