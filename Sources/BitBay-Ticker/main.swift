@@ -1,17 +1,13 @@
 import BitBay_TickerCore
 
-private var firstUserArgument: String? {
-    if CommandLine.arguments.count > 1 {
-       return CommandLine.arguments[1]
-    } else {
-        return nil
-    }
+private var userFirstArgument: String? {
+    return CommandLine.arguments.dropFirst().first
 }
 
 // MARK: - Main Method
 
-if let firstUserArgument = firstUserArgument, let ticker = TickerFactory.makeTicker(named: firstUserArgument) {
-    let tickerDescription = ticker.description(printArguments: Array(CommandLine.arguments.dropFirst(2)))
+if let userFirstArgument = userFirstArgument, let ticker = TickerFactory.makeTicker(named: userFirstArgument) {
+    let userPrintArguments = Array(CommandLine.arguments.dropFirst(2))
     
-    print(tickerDescription)
+    print(ticker.description(printArguments: userPrintArguments))
 }
