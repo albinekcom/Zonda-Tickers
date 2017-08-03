@@ -43,8 +43,7 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual("Ticker BTC/PLN", ticker.description(printArguments: ["last"]))
         XCTAssertEqual("Ticker BTC/PLN, max: 11273.0 PLN, last: 11273.0 PLN", ticker.description(printArguments: ["--max", "--last"]))
     }
-
-
+    
     static var allTests = [
         ("testInitializingFromJSON", testInitializingFromJSON)
     ]

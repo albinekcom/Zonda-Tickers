@@ -22,6 +22,11 @@ public struct TickerNameValidator {
             "LSKUSD",
             "LSKEUR",
             "LSKBTC",
+            
+            "BCCPLN",
+            "BCCUSD",
+            "BCCEUR",
+            "BCCBTC"
         ]
     }
     

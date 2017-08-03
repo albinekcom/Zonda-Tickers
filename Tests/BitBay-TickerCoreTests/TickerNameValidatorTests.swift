@@ -31,6 +31,11 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(validator.isValid(name: "LSKEUR"))
         XCTAssertTrue(validator.isValid(name: "LSKBTC"))
         
+        XCTAssertTrue(validator.isValid(name: "BCCPLN"))
+        XCTAssertTrue(validator.isValid(name: "BCCUSD"))
+        XCTAssertTrue(validator.isValid(name: "BCCEUR"))
+        XCTAssertTrue(validator.isValid(name: "BCCBTC"))
+        
         XCTAssertTrue(validator.isValid(name: "btcpln"))
         XCTAssertTrue(validator.isValid(name: "BTCplN"))
         
@@ -39,7 +44,6 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertFalse(validator.isValid(name: "BTCPL"))
         XCTAssertFalse(validator.isValid(name: "LSKETH"))
     }
-    
     
     static var allTests = [
         ("testIsValid", testIsValid)

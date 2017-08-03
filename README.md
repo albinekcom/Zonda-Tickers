@@ -34,6 +34,10 @@ $ .build/debug/BitBay-Ticker BTCPLN --last --average
 - `LSKUSD`
 - `LSKEUR`
 - `LSKBTC`
+- `BCCPLN`
+- `BCCUSD`
+- `BCCEUR`
+- `BCCBTC`
 
 ### Available print arguments
 

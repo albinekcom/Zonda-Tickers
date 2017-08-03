@@ -25,7 +25,6 @@ final class TickerFactoryTests: XCTestCase {
         XCTAssertNil(ticker)
     }
     
-    
     static var allTests = [
         ("testMakeTickerWithCorrectName", testMakeTickerWithCorrectName),
         ("testMakeTickerWithIncorrectName", testMakeTickerWithIncorrectName)
