@@ -3,7 +3,7 @@
 ![Swift 4](https://img.shields.io/badge/Swift-4-orange.svg)
 [![Build Status](https://travis-ci.org/albinekcom/BitBay-Ticker.svg?branch=master)](https://travis-ci.org/albinekcom/BitBay-Ticker)
 
-This is a command line tool to receive ticker information using [BitBay Public API](https://www.bitbay.net/public-api).
+This is a command line tool to receive ticker information using [BitBay Public API](https://www.bitbay.net/en/api-public).
 
 
 ## Usage
