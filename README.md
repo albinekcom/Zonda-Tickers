@@ -38,6 +38,14 @@ $ .build/debug/BitBay-Ticker BTCPLN --last --average
 - `BCCUSD`
 - `BCCEUR`
 - `BCCBTC`
+- `DASHPLN`
+- `DASHUSD`
+- `DASHEUR`
+- `DASHBTC`
+- `GAMEPLN`
+- `GAMEUSD`
+- `GAMEEUR`
+- `GAMEBTC`
 
 ### Available print arguments
 
