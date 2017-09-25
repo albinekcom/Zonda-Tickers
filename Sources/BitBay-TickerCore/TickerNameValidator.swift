@@ -26,7 +26,17 @@ public struct TickerNameValidator {
             "BCCPLN",
             "BCCUSD",
             "BCCEUR",
-            "BCCBTC"
+            "BCCBTC",
+            
+            "DASHPLN",
+            "DASHUSD",
+            "DASHEUR",
+            "DASHBTC",
+            
+            "GAMEPLN",
+            "GAMEUSD",
+            "GAMEEUR",
+            "GAMEBTC"
         ]
     }
     

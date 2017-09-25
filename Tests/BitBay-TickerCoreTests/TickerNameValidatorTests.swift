@@ -36,6 +36,16 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(validator.isValid(name: "BCCEUR"))
         XCTAssertTrue(validator.isValid(name: "BCCBTC"))
         
+        XCTAssertTrue(validator.isValid(name: "DASHPLN"))
+        XCTAssertTrue(validator.isValid(name: "DASHUSD"))
+        XCTAssertTrue(validator.isValid(name: "DASHEUR"))
+        XCTAssertTrue(validator.isValid(name: "DASHBTC"))
+        
+        XCTAssertTrue(validator.isValid(name: "GAMEPLN"))
+        XCTAssertTrue(validator.isValid(name: "GAMEUSD"))
+        XCTAssertTrue(validator.isValid(name: "GAMEEUR"))
+        XCTAssertTrue(validator.isValid(name: "GAMEBTC"))
+        
         XCTAssertTrue(validator.isValid(name: "btcpln"))
         XCTAssertTrue(validator.isValid(name: "BTCplN"))
         
