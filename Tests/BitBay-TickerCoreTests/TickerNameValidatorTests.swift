@@ -3,56 +3,48 @@ import XCTest
 
 final class TickerNameValidatorTests: XCTestCase {
     
-    private var validator: TickerNameValidator!
-    
-    override func setUp() {
-        super.setUp()
-        
-        validator = TickerNameValidator()
-    }
-    
     func testIsValid() {
-        XCTAssertTrue(validator.isValid(name: "BTCPLN"))
-        XCTAssertTrue(validator.isValid(name: "BTCUSD"))
-        XCTAssertTrue(validator.isValid(name: "BTCEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCEUR"))
         
-        XCTAssertTrue(validator.isValid(name: "LTCPLN"))
-        XCTAssertTrue(validator.isValid(name: "LTCUSD"))
-        XCTAssertTrue(validator.isValid(name: "LTCEUR"))
-        XCTAssertTrue(validator.isValid(name: "LTCBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LTCPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LTCUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LTCEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LTCBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "ETHPLN"))
-        XCTAssertTrue(validator.isValid(name: "ETHUSD"))
-        XCTAssertTrue(validator.isValid(name: "ETHEUR"))
-        XCTAssertTrue(validator.isValid(name: "ETHBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ETHPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ETHUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ETHEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ETHBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "LSKPLN"))
-        XCTAssertTrue(validator.isValid(name: "LSKUSD"))
-        XCTAssertTrue(validator.isValid(name: "LSKEUR"))
-        XCTAssertTrue(validator.isValid(name: "LSKBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LSKPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LSKUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LSKEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "LSKBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "BCCPLN"))
-        XCTAssertTrue(validator.isValid(name: "BCCUSD"))
-        XCTAssertTrue(validator.isValid(name: "BCCEUR"))
-        XCTAssertTrue(validator.isValid(name: "BCCBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BCCPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BCCUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BCCEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BCCBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "DASHPLN"))
-        XCTAssertTrue(validator.isValid(name: "DASHUSD"))
-        XCTAssertTrue(validator.isValid(name: "DASHEUR"))
-        XCTAssertTrue(validator.isValid(name: "DASHBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "DASHPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "DASHUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "DASHEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "DASHBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "GAMEPLN"))
-        XCTAssertTrue(validator.isValid(name: "GAMEUSD"))
-        XCTAssertTrue(validator.isValid(name: "GAMEEUR"))
-        XCTAssertTrue(validator.isValid(name: "GAMEBTC"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "GAMEPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "GAMEUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "GAMEEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "GAMEBTC"))
         
-        XCTAssertTrue(validator.isValid(name: "btcpln"))
-        XCTAssertTrue(validator.isValid(name: "BTCplN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "btcpln"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCplN"))
         
-        XCTAssertFalse(validator.isValid(name: "BTCPLNN"))
-        XCTAssertFalse(validator.isValid(name: ""))
-        XCTAssertFalse(validator.isValid(name: "BTCPL"))
-        XCTAssertFalse(validator.isValid(name: "LSKETH"))
+        XCTAssertFalse(TickerNameValidator.isValid(name: "BTCPLNN"))
+        XCTAssertFalse(TickerNameValidator.isValid(name: ""))
+        XCTAssertFalse(TickerNameValidator.isValid(name: "BTCPL"))
+        XCTAssertFalse(TickerNameValidator.isValid(name: "LSKETH"))
     }
     
     static var allTests = [
