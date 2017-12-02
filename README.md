@@ -18,37 +18,12 @@ $ .build/debug/BitBay-Ticker BTCPLN --last --average
 
 ### Available first argument
 
-- `BTCPLN`
-- `BTCUSD`
-- `BTCEUR`
-- `LTCPLN`
-- `LTCUSD`
-- `LTCEUR`
-- `LTCBTC`
-- `ETHPLN`
-- `ETHUSD`
-- `ETHEUR`
-- `ETHBTC`
-- `LSKPLN`
-- `LSKUSD`
-- `LSKEUR`
-- `LSKBTC`
-- `BCCPLN`
-- `BCCUSD`
-- `BCCEUR`
-- `BCCBTC`
-- `DASHPLN`
-- `DASHUSD`
-- `DASHEUR`
-- `DASHBTC`
-- `GAMEPLN`
-- `GAMEUSD`
-- `GAMEEUR`
-- `GAMEBTC`
-- `BTGPLN`
-- `BTGUSD`
-- `BTGEUR`
-- `BTGBTC`
+| Bitcoin  | Litecoin | Ethereum | Lisk     | Bitcoin Cash | Dash      | Game      | Bitcoin Gold |
+|----------|----------|----------|----------|--------------|-----------|-----------|--------------|
+| `BTCPLN` | `LTCPLN` | `ETHPLN` | `LSKPLN` | `BCCPLN`     | `DASHPLN` | `GAMEPLN` | `BTGPLN`     |
+| `BTCPLN` | `LTCUSD` | `ETHUSD` | `LSKUSD` | `BCCUSD`     | `DASHUSD` | `GAMEUSD` | `BTGUSD`     |
+| `BTCPLN` | `LTCEUR` | `ETHEUR` | `LSKEUR` | `BCCEUR`     | `DASHEUR` | `GAMEEUR` | `BTGEUR`     |
+|          | `LTCBTC` | `ETHBTC` | `LSKBTC` | `BCCBTC`     | `DASHBTC` | `GAMEBTC` | `BTGBTC`     |
 
 ### Available print arguments
 
