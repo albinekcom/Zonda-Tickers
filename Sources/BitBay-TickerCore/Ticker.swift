@@ -15,8 +15,8 @@ public struct Ticker {
     let volume: Double?
     
     public init(named name: String, jsonDictionary: [String: Any]) {
-        baseCurrency = String(name.uppercased().characters.dropLast(defaultCounterCurrencyNameLength))
-        counterCurrency = String(name.uppercased().characters.dropFirst(name.characters.count - defaultCounterCurrencyNameLength))
+        baseCurrency = String(name.uppercased().dropLast(defaultCounterCurrencyNameLength))
+        counterCurrency = String(name.uppercased().dropFirst(name.count - defaultCounterCurrencyNameLength))
         
         max = jsonDictionary["max"] as? Double
         min = jsonDictionary["min"] as? Double
