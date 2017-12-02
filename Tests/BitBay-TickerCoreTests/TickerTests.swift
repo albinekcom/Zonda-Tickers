@@ -45,7 +45,8 @@ final class TickerTests: XCTestCase {
     }
     
     static var allTests = [
-        ("testInitializingFromJSON", testInitializingFromJSON)
+        ("testInitializingFromJSON", testInitializingFromJSON),
+        ("testDescriptionPrintArguments", testDescriptionPrintArguments)
     ]
 
 }
