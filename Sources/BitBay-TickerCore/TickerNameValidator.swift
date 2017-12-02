@@ -33,7 +33,12 @@ public struct TickerNameValidator {
         "GAMEPLN",
         "GAMEUSD",
         "GAMEEUR",
-        "GAMEBTC"
+        "GAMEBTC",
+        
+        "BTGPLN",
+        "BTGUSD",
+        "BTGEUR",
+        "BTGBTC"
     ]
     
     public static func isValid(name: String) -> Bool {

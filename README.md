@@ -5,7 +5,6 @@
 
 This is a command line tool to receive ticker information using [BitBay Public API](https://www.bitbay.net/en/api-public).
 
-
 ## Usage
 
 Clone this repository, build and execute with ticker name as a first argument and other print arguments.
@@ -46,6 +45,10 @@ $ .build/debug/BitBay-Ticker BTCPLN --last --average
 - `GAMEUSD`
 - `GAMEEUR`
 - `GAMEBTC`
+- `BTGPLN`
+- `BTGUSD`
+- `BTGEUR`
+- `BTGBTC`
 
 ### Available print arguments
 
