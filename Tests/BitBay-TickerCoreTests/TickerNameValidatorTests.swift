@@ -43,6 +43,8 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTGEUR"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTGBTC"))
         
+        XCTAssertTrue(TickerNameValidator.isValid(name: "KZCBTC"))
+        
         XCTAssertTrue(TickerNameValidator.isValid(name: "btcpln"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTCplN"))
         
