@@ -45,6 +45,13 @@ final class TickerNameValidatorTests: XCTestCase {
         
         XCTAssertTrue(TickerNameValidator.isValid(name: "KZCBTC"))
         
+        XCTAssertTrue(TickerNameValidator.isValid(name: "PLNXRP"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "EURXRP"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "USDXRP"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCXRP"))
+        
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BTCXIN"))
+        
         XCTAssertTrue(TickerNameValidator.isValid(name: "btcpln"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTCplN"))
         
