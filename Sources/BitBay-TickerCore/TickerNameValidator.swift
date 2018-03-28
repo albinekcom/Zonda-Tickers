@@ -42,12 +42,12 @@ public struct TickerNameValidator {
         
         "KZCBTC",
         
-        "PLNXRP",
-        "EURXRP",
-        "USDXRP",
-        "BTCXRP",
+        "XRPPLN",
+        "XRPEUR",
+        "XRPUSD",
+        "XRPBTC",
         
-        "BTCXIN"
+        "XINBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
