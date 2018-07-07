@@ -43,6 +43,9 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTGEUR"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTGBTC"))
         
+        XCTAssertTrue(TickerNameValidator.isValid(name: "KZCPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "KZCEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "KZCUSD"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "KZCBTC"))
         
         XCTAssertTrue(TickerNameValidator.isValid(name: "XRPPLN"))
@@ -50,7 +53,20 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(TickerNameValidator.isValid(name: "XRPUSD"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "XRPBTC"))
         
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XINPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XINEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XINUSD"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "XINBTC"))
+        
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XMRPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XMREUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XMRUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "XMRBTC"))
+        
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ZECPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ZECEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ZECUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "ZECBTC"))
         
         XCTAssertTrue(TickerNameValidator.isValid(name: "btcpln"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTCplN"))

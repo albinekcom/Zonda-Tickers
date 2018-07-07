@@ -40,6 +40,9 @@ public struct TickerNameValidator {
         "BTGEUR",
         "BTGBTC",
         
+        "KZCPLN",
+        "KZCEUR",
+        "KZCUSD",
         "KZCBTC",
         
         "XRPPLN",
@@ -47,7 +50,20 @@ public struct TickerNameValidator {
         "XRPUSD",
         "XRPBTC",
         
-        "XINBTC"
+        "XINPLN",
+        "XINEUR",
+        "XINUSD",
+        "XINBTC",
+        
+        "XMRPLN",
+        "XMREUR",
+        "XMRUSD",
+        "XMRBTC",
+        
+        "ZECPLN",
+        "ZECEUR",
+        "ZECUSD",
+        "ZECBTC",
     ]
     
     public static func isValid(name: String) -> Bool {

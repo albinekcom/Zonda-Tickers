@@ -1,10 +1,12 @@
+// swift-tools-version:4.0
+
 import PackageDescription
 
 let package = Package(
     name: "BitBay-Ticker",
 
     targets: [
-        Target(name: "BitBay-Ticker", dependencies: ["BitBay-TickerCore"]),
-        Target(name: "BitBay-TickerCore")
+        .target(name: "BitBay-Ticker", dependencies: ["BitBay-TickerCore"]),
+        .target(name: "BitBay-TickerCore")
     ]
 )
