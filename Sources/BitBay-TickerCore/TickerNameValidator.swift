@@ -1,3 +1,5 @@
+import Foundation
+
 public struct TickerNameValidator {
     
     private static let validNames = [

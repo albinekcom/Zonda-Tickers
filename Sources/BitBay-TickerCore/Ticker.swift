@@ -1,3 +1,5 @@
+import Foundation
+
 public struct Ticker {
     
     private let defaultCounterCurrencyNameLength = 3
