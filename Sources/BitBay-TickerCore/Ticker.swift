@@ -16,7 +16,7 @@ public struct Ticker {
     let average: Double?
     let volume: Double?
     
-    public init(named name: String, jsonDictionary: [String: Any]) {
+    init(named name: String, jsonDictionary: [String: Any]) {
         baseCurrency = String(name.uppercased().dropLast(defaultCounterCurrencyNameLength))
         counterCurrency = String(name.uppercased().dropFirst(name.count - defaultCounterCurrencyNameLength))
         
@@ -30,7 +30,11 @@ public struct Ticker {
         volume = jsonDictionary["volume"] as? Double
     }
     
-    public func description(printArguments: [String]) -> String {
+}
+    
+public extension Ticker {
+    
+    func description(printArguments: [String]) -> String {
         var desc = "Ticker \(baseCurrency)/\(counterCurrency)"
         
         let showAll = printArguments.count == 0
