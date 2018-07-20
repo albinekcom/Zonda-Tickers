@@ -66,6 +66,16 @@ public struct TickerNameValidator {
         "ZECEUR",
         "ZECUSD",
         "ZECBTC",
+        
+        "GNTPLN",
+        "GNTEUR",
+        "GNTUSD",
+        "GNTBTC",
+        
+        "OMGPLN",
+        "OMGEUR",
+        "OMGUSD",
+        "OMGBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
