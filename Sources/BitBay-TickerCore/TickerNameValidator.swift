@@ -75,7 +75,12 @@ public struct TickerNameValidator {
         "OMGPLN",
         "OMGEUR",
         "OMGUSD",
-        "OMGBTC"
+        "OMGBTC",
+        
+        "FTOPLN",
+        "FTOEUR",
+        "FTOUSD",
+        "FTOBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
