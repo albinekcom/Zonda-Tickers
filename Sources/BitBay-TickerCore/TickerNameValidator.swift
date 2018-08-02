@@ -80,7 +80,27 @@ public struct TickerNameValidator {
         "FTOPLN",
         "FTOEUR",
         "FTOUSD",
-        "FTOBTC"
+        "FTOBTC",
+        
+        "REPPLN",
+        "REPEUR",
+        "REPUSD",
+        "REPBTC",
+        
+        "BATPLN",
+        "BATEUR",
+        "BATUSD",
+        "BATBTC",
+        
+        "ZRXPLN",
+        "ZRXEUR",
+        "ZRXUSD",
+        "ZRXBTC",
+        
+        "PAYPLN",
+        "PAYEUR",
+        "PAYUSD",
+        "PAYBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
