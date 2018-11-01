@@ -1,11 +1,6 @@
 import Foundation
 
-public struct Ticker {
-    
-    private let defaultCounterCurrencyNameLength = 3
-    
-    let baseCurrency: String
-    let counterCurrency: String
+public struct Ticker: Codable {
     
     let max: Double?
     let min: Double?
@@ -16,25 +11,29 @@ public struct Ticker {
     let average: Double?
     let volume: Double?
     
-    init(named name: String, jsonDictionary: [String: Any]) {
-        baseCurrency = String(name.uppercased().dropLast(defaultCounterCurrencyNameLength))
-        counterCurrency = String(name.uppercased().dropFirst(name.count - defaultCounterCurrencyNameLength))
+    var name: String?
+    
+    var baseCurrency: String? {
+        guard let name = name else { return nil }
         
-        max = jsonDictionary["max"] as? Double
-        min = jsonDictionary["min"] as? Double
-        last = jsonDictionary["last"] as? Double
-        bid = jsonDictionary["bid"] as? Double
-        ask = jsonDictionary["ask"] as? Double
-        vwap = jsonDictionary["vwap"] as? Double
-        average = jsonDictionary["average"] as? Double
-        volume = jsonDictionary["volume"] as? Double
+        return String(name.uppercased().dropLast(defaultCounterCurrencyNameLength))
     }
+    
+    var counterCurrency: String? {
+        guard let name = name else { return nil }
+        
+        return String(name.uppercased().dropFirst(name.count - defaultCounterCurrencyNameLength))
+    }
+    
+    private let defaultCounterCurrencyNameLength = 3
     
 }
     
 public extension Ticker {
     
     func description(printArguments: [String]) -> String {
+        guard let baseCurrency = baseCurrency, let counterCurrency = counterCurrency else { return "" }
+        
         var desc = "Ticker \(baseCurrency)/\(counterCurrency)"
         
         let showAll = printArguments.count == 0

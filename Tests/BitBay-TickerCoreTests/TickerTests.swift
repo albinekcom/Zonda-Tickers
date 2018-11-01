@@ -10,9 +10,11 @@ final class TickerTests: XCTestCase {
         
         let name = "BTCPLN"
         let jsonString = "{\"max\":11273,\"min\":10175.99,\"last\":11273,\"bid\":11250,\"ask\":11273,\"vwap\":11016.08,\"average\":11273,\"volume\":1050.98805379}"
-        let jsonDictionary = try! JSONSerialization.jsonObject(with: jsonString.data(using: .utf8)!) as! [String: Any]
         
-        ticker = Ticker(named: name, jsonDictionary: jsonDictionary)
+        let jsonData = Data(jsonString.utf8)
+        
+        ticker = try! JSONDecoder().decode(Ticker.self, from: jsonData)
+        ticker.name = name
     }
 
     func testInitializingFromJSON() {

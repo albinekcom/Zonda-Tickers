@@ -6,11 +6,12 @@ public struct TickerFactory {
         guard
             TickerNameValidator.isValid(name: tickerName),
             let url = URL(string: "https://bitbay.net/API/Public/\(tickerName)/ticker.json"),
-            let jsonData = try? Data(contentsOf: url),
-            let jsonObject = try? JSONSerialization.jsonObject(with: jsonData),
-            let jsonDictionary = jsonObject as? [String: Any] else { return nil }
+            let jsonData = try? Data(contentsOf: url) else { return nil }
         
-        return Ticker(named: tickerName, jsonDictionary: jsonDictionary)
+        var ticker = try? JSONDecoder().decode(Ticker.self, from: jsonData)
+        ticker?.name = tickerName
+        
+        return ticker
     }
     
 }
