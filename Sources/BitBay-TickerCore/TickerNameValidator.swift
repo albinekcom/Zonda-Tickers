@@ -105,7 +105,22 @@ public struct TickerNameValidator {
         "NEUPLN",
         "NEUEUR",
         "NEUUSD",
-        "NEUBTC"
+        "NEUBTC",
+        
+        "TRXPLN",
+        "TRXEUR",
+        "TRXUSD",
+        "TRXBTC",
+        
+        "AMLTPLN",
+        "AMLTEUR",
+        "AMLTUSD",
+        "AMLTBTC",
+        
+        "EXYPLN",
+        "EXYEUR",
+        "EXYUSD",
+        "EXYBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
