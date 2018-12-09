@@ -123,6 +123,11 @@ final class TickerNameValidatorTests: XCTestCase {
         XCTAssertTrue(TickerNameValidator.isValid(name: "EXYUSD"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "EXYBTC"))
         
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BOBPLN"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BOBEUR"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BOBUSD"))
+        XCTAssertTrue(TickerNameValidator.isValid(name: "BOBBTC"))
+        
         XCTAssertTrue(TickerNameValidator.isValid(name: "btcpln"))
         XCTAssertTrue(TickerNameValidator.isValid(name: "BTCplN"))
         

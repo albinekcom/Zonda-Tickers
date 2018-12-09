@@ -120,7 +120,12 @@ public struct TickerNameValidator {
         "EXYPLN",
         "EXYEUR",
         "EXYUSD",
-        "EXYBTC"
+        "EXYBTC",
+        
+        "BOBPLN",
+        "BOBEUR",
+        "BOBUSD",
+        "BOBBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
