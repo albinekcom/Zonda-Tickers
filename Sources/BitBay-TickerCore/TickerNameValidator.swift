@@ -125,7 +125,10 @@ public struct TickerNameValidator {
         "BOBPLN",
         "BOBEUR",
         "BOBUSD",
-        "BOBBTC"
+        "BOBBTC",
+        
+        "LMLPLN",
+        "LMLBTC"
     ]
     
     public static func isValid(name: String) -> Bool {
