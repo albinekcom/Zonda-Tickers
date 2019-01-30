@@ -128,7 +128,21 @@ public struct TickerNameValidator {
         "BOBBTC",
         
         "LMLPLN",
-        "LMLBTC"
+        "LMLBTC",
+
+        "XLMPLN",
+        "XLMEUR",
+        "XLMUSD",
+        "XLMBTC",
+
+        "XBXBTC",
+
+        "BCPPLN",
+
+        "BSVPLN",
+        "BSVEUR",
+        "BSVUSD",
+        "BSVBTC",
     ]
     
     public static func isValid(name: String) -> Bool {
