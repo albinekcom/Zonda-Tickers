@@ -1,13 +1,27 @@
 import BitBay_TickerCore
+import Foundation
 
-private var userFirstArgument: String? {
-    return CommandLine.arguments.dropFirst().first
-}
-
-// MARK: - Main Method
-
-if let userFirstArgument = userFirstArgument, let ticker = TickerFactory.makeTicker(named: userFirstArgument) {
-    let userPrintArguments = Array(CommandLine.arguments.dropFirst(2))
+guard let tickerName = UserArguments.firstArgument else {
+    print("[Error] Wrong first argument...")
     
-    print(ticker.description(printArguments: userPrintArguments))
+    exit(-1)
 }
+
+guard TickerNameValidator.isValid(name: tickerName) else {
+    print("[Error] Ticker name is not valid...")
+    
+    exit(-1)
+}
+
+var ticker = Ticker(name: tickerName)
+
+guard let apiTickerName = ticker.apiTickerName else {
+    print("[Error] Cannot generate ticker API name...")
+    
+    exit(-1)
+}
+
+let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: apiTickerName)
+ticker.setUpValues(using: tickerValuesAPIResponse)
+
+print(ticker.description(printArguments: UserArguments.printArguments))

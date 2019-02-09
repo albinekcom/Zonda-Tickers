@@ -1,32 +1,51 @@
 import Foundation
 
-public struct Ticker: Codable {
+public struct Ticker {
     
-    let max: Double?
-    let min: Double?
-    let last: Double?
-    let bid: Double?
-    let ask: Double?
-    let vwap: Double?
-    let average: Double?
-    let volume: Double?
+    public let name: String
     
-    var name: String?
+    public var max: Double?
+    public var min: Double?
+    public var last: Double?
+    public var bid: Double?
+    public var ask: Double?
+    public var vwap: Double?
+    public var average: Double?
+    public var volume: Double?
     
-    var baseCurrency: String? {
-        guard let name = name else { return nil }
+    public var baseCurrency: String? {
+        guard let range = name.range(of: "/") else { return nil }
         
-        return String(name.uppercased().dropLast(defaultCounterCurrencyNameLength))
+        return String(name[..<range.lowerBound]).uppercased()
     }
     
-    var counterCurrency: String? {
-        guard let name = name else { return nil }
+    public var counterCurrency: String? {
+        guard let range = name.range(of: "/") else { return nil }
         
-        return String(name.uppercased().dropFirst(name.count - defaultCounterCurrencyNameLength))
+        return String(name[name.index(range.lowerBound, offsetBy: 1)...]).uppercased()
     }
     
-    private let defaultCounterCurrencyNameLength = 3
+    public var apiTickerName: String? {
+        guard let baseCurrency = baseCurrency else { return nil }
+        guard let counterCurrency = counterCurrency else { return nil }
+        
+        return baseCurrency + counterCurrency
+    }
     
+    public init(name: String) {
+        self.name = name
+    }
+    
+    public mutating func setUpValues(using tickerValuesAPIResponse: TickerValuesAPIResponse?) {
+        max = tickerValuesAPIResponse?.max
+        min = tickerValuesAPIResponse?.min
+        last = tickerValuesAPIResponse?.last
+        bid = tickerValuesAPIResponse?.bid
+        ask = tickerValuesAPIResponse?.ask
+        vwap = tickerValuesAPIResponse?.vwap
+        average = tickerValuesAPIResponse?.average
+        volume = tickerValuesAPIResponse?.volume
+    }
 }
     
 public extension Ticker {
