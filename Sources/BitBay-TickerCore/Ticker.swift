@@ -32,14 +32,14 @@ public struct Ticker {
         return baseCurrency + counterCurrency
     }
     
-    public var areAllValuesFilled: Bool {
-        return  max != nil &&
-                min != nil &&
-                last != nil &&
-                bid != nil &&
-                ask != nil &&
-                vwap != nil &&
-                average != nil &&
+    public var isAnyValueFilled: Bool {
+        return  max != nil ||
+                min != nil ||
+                last != nil ||
+                bid != nil ||
+                ask != nil ||
+                vwap != nil ||
+                average != nil ||
                 volume != nil
     }
     

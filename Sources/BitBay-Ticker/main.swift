@@ -29,7 +29,7 @@ guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerVal
 
 ticker.setUpValues(using: tickerValuesAPIResponse)
 
-guard ticker.areAllValuesFilled else {
+guard ticker.isAnyValueFilled else {
     print("[Error] Ticker \"\(tickerName)\" is not supported right now...")
     
     exit(-1)
