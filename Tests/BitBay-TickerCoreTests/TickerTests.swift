@@ -36,6 +36,26 @@ final class TickerTests: XCTestCase {
         XCTAssertNil(ticker3.apiTickerName)
     }
     
+    func testAreAllValuesFilled() {
+        var ticker = Ticker(name: "BTC/PLN")
+        
+        XCTAssertFalse(ticker.areAllValuesFilled)
+        
+        ticker.max = 1
+        ticker.min = 2
+        ticker.last = 3
+        ticker.bid = 4
+        ticker.ask = 5
+        ticker.vwap = 6
+        ticker.average = 7
+        
+        XCTAssertFalse(ticker.areAllValuesFilled)
+        
+        ticker.volume = 8
+        
+        XCTAssertTrue(ticker.areAllValuesFilled)
+    }
+    
     func testSetUpValues() {
         var ticker = Ticker(name: "BTC/PLN")
         XCTAssertNil(ticker.max)

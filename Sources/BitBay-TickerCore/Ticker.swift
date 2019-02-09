@@ -32,19 +32,30 @@ public struct Ticker {
         return baseCurrency + counterCurrency
     }
     
+    public var areAllValuesFilled: Bool {
+        return  max != nil &&
+                min != nil &&
+                last != nil &&
+                bid != nil &&
+                ask != nil &&
+                vwap != nil &&
+                average != nil &&
+                volume != nil
+    }
+    
     public init(name: String) {
         self.name = name
     }
     
-    public mutating func setUpValues(using tickerValuesAPIResponse: TickerValuesAPIResponse?) {
-        max = tickerValuesAPIResponse?.max
-        min = tickerValuesAPIResponse?.min
-        last = tickerValuesAPIResponse?.last
-        bid = tickerValuesAPIResponse?.bid
-        ask = tickerValuesAPIResponse?.ask
-        vwap = tickerValuesAPIResponse?.vwap
-        average = tickerValuesAPIResponse?.average
-        volume = tickerValuesAPIResponse?.volume
+    public mutating func setUpValues(using tickerValuesAPIResponse: TickerValuesAPIResponse) {
+        max = tickerValuesAPIResponse.max
+        min = tickerValuesAPIResponse.min
+        last = tickerValuesAPIResponse.last
+        bid = tickerValuesAPIResponse.bid
+        ask = tickerValuesAPIResponse.ask
+        vwap = tickerValuesAPIResponse.vwap
+        average = tickerValuesAPIResponse.average
+        volume = tickerValuesAPIResponse.volume
     }
 }
     
