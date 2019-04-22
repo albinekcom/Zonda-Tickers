@@ -22,8 +22,8 @@ guard let apiTickerName = ticker.apiTickerName else {
 }
 
 guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: apiTickerName) else {
-    print("[Error] Problem with receiving values form API...")
     
+    print("[Error] Problem with receiving values from API...")
     exit(-1)
 }
 
