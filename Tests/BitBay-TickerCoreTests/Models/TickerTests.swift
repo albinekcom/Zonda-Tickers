@@ -59,6 +59,24 @@ final class TickerTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
+    func testSetUpStatistics() {
+        var ticker = Ticker(id: "BTC-PLN")
+
+        XCTAssertNil(ticker?.highestRate)
+        XCTAssertNil(ticker?.lowestRate)
+        XCTAssertNil(ticker?.volume)
+        XCTAssertNil(ticker?.average)
+        
+        ticker?.setUpStatistics(using: TickerStatisticsAPIResponse(status: nil, stats: TickerStatisticsAPIResponse.StatisticsAPIResponse(m: nil, h: "1.1", l: "2.2", v: "3.3", r24h: "4.4")))
+
+        XCTAssertEqual(1.1, ticker?.highestRate)
+        XCTAssertEqual(2.2, ticker?.lowestRate)
+        XCTAssertEqual(3.3, ticker?.volume)
+        XCTAssertEqual(4.4, ticker?.average)
+        
+        XCTAssertTrue(true)
+    }
+    
     func testDescriptionPrintArguments() {
         var ticker = Ticker(id: "BTC-PLN")
         ticker?.highestBid = 1.1

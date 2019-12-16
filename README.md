@@ -17,7 +17,7 @@ $ swift run BitBay-Ticker BTC-PLN --lowestAsk --rate
 
 ### Available first argument
 
-If Public Trading API does not support a particular ticker, you will receive an appropriate message. The list of supported tickers can be found here: [Available Tickers](https://github.com/albinekcom/BitBay-API-Tools/blob/master/v1/available-tickers.json).
+If public trading API does not support a particular ticker, you will receive an appropriate message. The list of supported tickers can be found here: [Available Tickers](https://github.com/albinekcom/BitBay-API-Tools/blob/master/v1/available-tickers.json).
 
 ### Available print arguments
 
@@ -25,3 +25,7 @@ If Public Trading API does not support a particular ticker, you will receive an 
 - `--lowestAsk`
 - `--rate`
 - `--previousRate`
+- `--highestRate`
+- `--lowestRate`
+- `--volume`
+- `--average`
