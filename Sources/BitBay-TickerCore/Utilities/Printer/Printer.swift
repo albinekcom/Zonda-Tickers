@@ -1,26 +1,19 @@
 public struct Printer {
     
-    public init() {
-        
-    }
-    
-    public func prettyDescription(for ticker: Ticker, printArguments: [PrintArgument]) -> String {
+    public static func makePrettyDescription(for ticker: Ticker, printArguments: [PrintArgument]) -> String {
         var description = "Ticker \(ticker.id)"
         
-        let usedPrintArguments: [PrintArgument]
-        
-        let valueDescriptions = printArguments.map { prettyValueDescription(for: ticker, printArgument: $0) }
+        let valueDescriptions = printArguments.map { makePrettyValueDescription(for: ticker, printArgument: $0) }
         let valueDescriptionsInOneString = valueDescriptions.joined(separator: ", ")
         
         if valueDescriptionsInOneString.isEmpty == false {
             description += ", \(valueDescriptionsInOneString)"
         }
         
-        
         return description
     }
     
-    private func prettyValueDescription(for ticker: Ticker, printArgument: PrintArgument) -> String {
+    private static func makePrettyValueDescription(for ticker: Ticker, printArgument: PrintArgument) -> String {
         let title: String
         let value: Double?
         let isCounterCurrencyAddedAtTheEnd: Bool
@@ -57,14 +50,14 @@ public struct Printer {
             isCounterCurrencyAddedAtTheEnd = true
             
         case .volume:
-            title = "highest bid"
+            title = "volume"
             value = ticker.volume
-            isCounterCurrencyAddedAtTheEnd = true
+            isCounterCurrencyAddedAtTheEnd = false
             
         case .average:
             title = "average"
-            value = ticker.highestBid
-            isCounterCurrencyAddedAtTheEnd = false
+            value = ticker.average
+            isCounterCurrencyAddedAtTheEnd = true
         }
         
         let valueString: String

@@ -72,4 +72,10 @@ final class PrintArgumentsStoreTests: XCTestCase {
         XCTAssertFalse(store8.shouldFetchTickerStatistics)
     }
     
+    static var allTests = [
+        ("testPrintArguments", testPrintArguments),
+        ("testShouldFetchTickerValues", testShouldFetchTickerValues),
+        ("testShouldFetchTickerStatistics", testShouldFetchTickerStatistics)
+    ]
+    
 }

@@ -41,4 +41,4 @@ guard ticker.isAnyValueFilled else {
     exit(-1)
 }
 
-print(Printer().prettyDescription(for: ticker, printArguments: printArgumentsStore.printArguments))
+print(Printer.makePrettyDescription(for: ticker, printArguments: printArgumentsStore.printArguments))
