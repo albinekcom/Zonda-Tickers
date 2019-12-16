@@ -9,13 +9,7 @@ public struct Printer {
         
         let usedPrintArguments: [PrintArgument]
         
-        if printArguments.isEmpty {
-            usedPrintArguments = PrintArgument.allCases
-        } else {
-            usedPrintArguments = printArguments
-        }
-        
-        let valueDescriptions = usedPrintArguments.map { prettyValueDescription(for: ticker, printArgument: $0) }
+        let valueDescriptions = printArguments.map { prettyValueDescription(for: ticker, printArgument: $0) }
         let valueDescriptionsInOneString = valueDescriptions.joined(separator: ", ")
         
         if valueDescriptionsInOneString.isEmpty == false {

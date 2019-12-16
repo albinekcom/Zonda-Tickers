@@ -6,7 +6,11 @@ public struct PrintArgumentsStore {
     public let printArguments: [PrintArgument]
     
     public init(userPrintArguments: [String]) {
-        printArguments = userPrintArguments.compactMap { PrintArgument(rawValue: $0) }
+        if userPrintArguments.isEmpty {
+            printArguments = PrintArgument.allCases
+        } else {
+            printArguments = userPrintArguments.compactMap { PrintArgument(rawValue: $0) }
+        }
     }
     
     public var shouldFetchTickerValues: Bool {
