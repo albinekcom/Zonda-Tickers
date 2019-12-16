@@ -13,21 +13,27 @@ guard var ticker = Ticker(id: tickerId) else {
     exit(-1)
 }
 
-guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: ticker.id) else {
-    print("[Error] Problem with fetching values from API...")
+let printArgumentsStore = PrintArgumentsStore(userPrintArguments: UserArguments.printArguments)
+
+if printArgumentsStore.shouldFetchTickerValues {
+    guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: ticker.id) else {
+        print("[Error] Problem with fetching values from API...")
+        
+        exit(-1)
+    }
     
-    exit(-1)
+    ticker.setUpValues(using: tickerValuesAPIResponse)
 }
 
-ticker.setUpValues(using: tickerValuesAPIResponse)
-
-guard let tickerStatisticsAPIResponse = TickerStatisticsAPIResponseFactory.makeTickerStatisticsAPIResponse(for: ticker.id) else {
-    print("[Error] Problem with fetching statistics from API...")
+if printArgumentsStore.shouldFetchTickerValues {
+    guard let tickerStatisticsAPIResponse = TickerStatisticsAPIResponseFactory.makeTickerStatisticsAPIResponse(for: ticker.id) else {
+        print("[Error] Problem with fetching statistics from API...")
+        
+        exit(-1)
+    }
     
-    exit(-1)
+    ticker.setUpStatistics(using: tickerStatisticsAPIResponse)
 }
-
-ticker.setUpStatistics(using: tickerStatisticsAPIResponse)
 
 guard ticker.isAnyValueFilled else {
     print("[Error] Ticker \"\(tickerId)\" is not supported...")
@@ -35,4 +41,4 @@ guard ticker.isAnyValueFilled else {
     exit(-1)
 }
 
-print(ticker.description(printArguments: UserArguments.printArguments))
+print(Printer().prettyDescription(for: ticker, printArguments: printArgumentsStore.printArguments))

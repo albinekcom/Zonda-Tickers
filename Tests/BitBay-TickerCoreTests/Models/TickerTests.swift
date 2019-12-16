@@ -77,30 +77,11 @@ final class TickerTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
-    func testDescriptionPrintArguments() {
-        var ticker = Ticker(id: "BTC-PLN")
-        ticker?.highestBid = 1.1
-        ticker?.lowestAsk = 2.2
-        ticker?.rate = 3.3
-        ticker?.previousRate = 4.4
-        
-        XCTAssertEqual("Ticker BTC-PLN, highest bid: 1.1 PLN, lowest ask: 2.2 PLN, rate: 3.3 PLN, previous rate: 4.4 PLN", ticker?.description(printArguments: []))
-
-        XCTAssertEqual("Ticker BTC-PLN, highest bid: 1.1 PLN", ticker?.description(printArguments: ["--highestBid"]))
-        XCTAssertEqual("Ticker BTC-PLN, lowest ask: 2.2 PLN", ticker?.description(printArguments: ["--lowestAsk"]))
-        XCTAssertEqual("Ticker BTC-PLN, rate: 3.3 PLN", ticker?.description(printArguments: ["--rate"]))
-        XCTAssertEqual("Ticker BTC-PLN, previous rate: 4.4 PLN", ticker?.description(printArguments: ["--previousRate"]))
-
-        XCTAssertEqual("Ticker BTC-PLN", ticker?.description(printArguments: ["rate"]))
-        XCTAssertEqual("Ticker BTC-PLN, highest bid: 1.1 PLN, rate: 3.3 PLN", ticker?.description(printArguments: ["--highestBid", "--rate"]))
-    }
-    
     static var allTests = [
         ("testBaseCurrency", testBaseCurrency),
         ("testCounterCurrency", testCounterCurrency),
         ("testIsAnyValueFilled", testIsAnyValueFilled),
-        ("testSetUpValues", testSetUpValues),
-        ("testDescriptionPrintArguments", testDescriptionPrintArguments)
+        ("testSetUpValues", testSetUpValues)
     ]
 
 }
