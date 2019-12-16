@@ -30,13 +30,7 @@ final class TickerTests: XCTestCase {
         
         XCTAssert(ticker?.isAnyValueFilled == false)
         
-        ticker?.highestBid = 1.1
-        ticker?.lowestAsk = 2.2
-        ticker?.rate = 3.3
-        
-        XCTAssert(ticker?.isAnyValueFilled == true)
-        
-        ticker?.previousRate = 4.4
+        ticker?.setUpValues(using: TickerValuesAPIResponse(status: nil, ticker: TickerValuesAPIResponse.TickerAPIResponse(market: nil, time: nil, highestBid: "1.1", lowestAsk: "2.2", rate: "3.3", previousRate: nil)))
         
         XCTAssert(ticker?.isAnyValueFilled == true)
     }

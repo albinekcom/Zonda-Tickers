@@ -2,14 +2,14 @@ public struct Ticker {
     
     public let id: String
     
-    public var highestBid: Double?
-    public var lowestAsk: Double?
-    public var rate: Double?
-    public var previousRate: Double?
-    public var highestRate: Double?
-    public var lowestRate: Double?
-    public var volume: Double?
-    public var average: Double?
+    public private(set) var highestBid: Double?
+    public private(set) var lowestAsk: Double?
+    public private(set) var rate: Double?
+    public private(set) var previousRate: Double?
+    public private(set) var highestRate: Double?
+    public private(set) var lowestRate: Double?
+    public private(set) var volume: Double?
+    public private(set) var average: Double?
     
     public var baseCurrency: String? {
         currencyIdentifiers.first
