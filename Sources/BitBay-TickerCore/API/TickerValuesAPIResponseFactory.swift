@@ -2,9 +2,11 @@ import Foundation
 
 public struct TickerValuesAPIResponseFactory {
     
-    public static func makeTickerValuesAPIResponse(for apiTickerName: String) -> TickerValuesAPIResponse? {
+    private static let endpointString = "https://api.bitbay.net/rest/trading/ticker/"
+    
+    public static func makeTickerValuesAPIResponse(for apiTickerId: String) -> TickerValuesAPIResponse? {
         guard
-            let url = URL(string: "https://bitbay.net/API/Public/\(apiTickerName)/ticker.json"),
+            let url = URL(string: "\(endpointString)\(apiTickerId)"),
             let jsonData = try? Data(contentsOf: url) else {
                 return nil
         }

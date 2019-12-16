@@ -1,14 +1,33 @@
-import Foundation
-
 public struct TickerValuesAPIResponse: Codable {
     
-    public let max: Double?
-    public let min: Double?
-    public let last: Double?
-    public let bid: Double?
-    public let ask: Double?
-    public let vwap: Double?
-    public let average: Double?
-    public let volume: Double?
+    struct TickerAPIResponse: Codable {
+        
+        struct MarketAPIResponse: Codable {
+            
+            struct CurrencyAPIReponse: Codable {
+                
+                let currency: String?
+                let minOffer: String?
+                let scale: Int?
+                
+            }
+            
+            let code: String?
+            let first: CurrencyAPIReponse?
+            let second: CurrencyAPIReponse?
+            
+        }
+        
+        let market: MarketAPIResponse?
+        let time: String?
+        let highestBid: String?
+        let lowestAsk: String?
+        let rate: String?
+        let previousRate: String?
+        
+    }
+
+    let status: String?
+    let ticker: TickerAPIResponse?
     
 }

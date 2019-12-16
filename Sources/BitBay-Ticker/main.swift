@@ -1,36 +1,30 @@
 import BitBay_TickerCore
 import Foundation
 
-guard let tickerName = UserArguments.firstArgument else {
+guard let tickerId = UserArguments.firstArgument else {
     print("[Error] Wrong first argument...")
     
     exit(-1)
 }
 
-guard TickerNameValidator.isValid(name: tickerName) else {
-    print("[Error] Ticker name \"\(tickerName)\" is not valid...")
+guard TickerNameValidator.isValid(name: tickerId) else {
+    print("[Error] Ticker identifier \"\(tickerId)\" is not valid...")
     
     exit(-1)
 }
 
-var ticker = Ticker(name: tickerName)
+var ticker = Ticker(id: tickerId)
 
-guard let apiTickerName = ticker.apiTickerName else {
-    print("[Error] Cannot generate ticker API name...")
-    
-    exit(-1)
-}
-
-guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: apiTickerName) else {
-    
+guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: ticker.id) else {
     print("[Error] Problem with receiving values from API...")
+    
     exit(-1)
 }
 
 ticker.setUpValues(using: tickerValuesAPIResponse)
 
 guard ticker.isAnyValueFilled else {
-    print("[Error] Ticker \"\(tickerName)\" is not supported right now...")
+    print("[Error] Ticker \"\(tickerId)\" is not supported...")
     
     exit(-1)
 }

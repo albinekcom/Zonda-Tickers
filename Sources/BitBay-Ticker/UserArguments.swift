@@ -1,5 +1,3 @@
-import Foundation
-
 struct UserArguments {
     
     static var firstArgument: String? {

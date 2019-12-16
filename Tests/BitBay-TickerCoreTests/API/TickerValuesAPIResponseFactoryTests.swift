@@ -4,29 +4,21 @@ import XCTest
 final class TickerValuesAPIResponseFactoryTests: XCTestCase {
     
     func testMakeTickerValuesAPIResponseWithCorrectTickerAPIName() {
-        let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: "BTCPLN")
+        let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: "BTC-PLN")
         
-        XCTAssertNotNil(tickerValuesAPIResponse?.max)
-        XCTAssertNotNil(tickerValuesAPIResponse?.min)
-        XCTAssertNotNil(tickerValuesAPIResponse?.last)
-        XCTAssertNotNil(tickerValuesAPIResponse?.bid)
-        XCTAssertNotNil(tickerValuesAPIResponse?.ask)
-        XCTAssertNotNil(tickerValuesAPIResponse?.vwap)
-        XCTAssertNotNil(tickerValuesAPIResponse?.average)
-        XCTAssertNotNil(tickerValuesAPIResponse?.volume)
+        XCTAssertNotNil(tickerValuesAPIResponse?.ticker?.highestBid)
+        XCTAssertNotNil(tickerValuesAPIResponse?.ticker?.lowestAsk)
+        XCTAssertNotNil(tickerValuesAPIResponse?.ticker?.rate)
+        XCTAssertNotNil(tickerValuesAPIResponse?.ticker?.previousRate)
     }
     
     func testMakeTickerValuesAPIResponseWithIncorrectTickerAPIName() {
         let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: "WRONG_TICKER_API_NAME")
         
-        XCTAssertNil(tickerValuesAPIResponse?.max)
-        XCTAssertNil(tickerValuesAPIResponse?.min)
-        XCTAssertNil(tickerValuesAPIResponse?.last)
-        XCTAssertNil(tickerValuesAPIResponse?.bid)
-        XCTAssertNil(tickerValuesAPIResponse?.ask)
-        XCTAssertNil(tickerValuesAPIResponse?.vwap)
-        XCTAssertNil(tickerValuesAPIResponse?.average)
-        XCTAssertNil(tickerValuesAPIResponse?.volume)
+        XCTAssertNil(tickerValuesAPIResponse?.ticker?.highestBid)
+        XCTAssertNil(tickerValuesAPIResponse?.ticker?.lowestAsk)
+        XCTAssertNil(tickerValuesAPIResponse?.ticker?.rate)
+        XCTAssertNil(tickerValuesAPIResponse?.ticker?.previousRate)
     }
     
     static var allTests = [
