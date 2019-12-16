@@ -7,13 +7,11 @@ guard let tickerId = UserArguments.firstArgument else {
     exit(-1)
 }
 
-guard TickerNameValidator.isValid(name: tickerId) else {
+guard var ticker = Ticker(id: tickerId) else {
     print("[Error] Ticker identifier \"\(tickerId)\" is not valid...")
     
     exit(-1)
 }
-
-var ticker = Ticker(id: tickerId)
 
 guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: ticker.id) else {
     print("[Error] Problem with receiving values from API...")

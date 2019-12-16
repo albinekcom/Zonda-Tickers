@@ -22,7 +22,9 @@ public struct Ticker {
                 previousRate != nil
     }
     
-    public init(id: String) {
+    public init?(id: String) {
+        guard TickerNameValidator.isValid(name: id) else { return nil }
+        
         self.id = id.uppercased()
     }
     
