@@ -9,7 +9,7 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual("BTC", ticker.baseCurrency)
     }
     
-    func testWrongBaseCurrency() throws {
+    func testEmptyBaseCurrency() throws {
         let ticker = getTicker(tickerIdentifier: "-PLN")
         
         XCTAssertEqual("", ticker.baseCurrency)
@@ -21,7 +21,7 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual("PLN", ticker.counterCurrency)
     }
     
-    func testWrongCounterCurrency() throws {
+    func testEmptyCounterCurrency() throws {
         let ticker = getTicker(tickerIdentifier: "BTC-")
         
         XCTAssertEqual("", ticker.counterCurrency)
