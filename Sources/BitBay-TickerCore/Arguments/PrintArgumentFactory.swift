@@ -1,6 +1,6 @@
-public struct PrintArgumentFactory {
+struct PrintArgumentFactory {
 
-    public func makePrintArguments(from printStringArguments: [String]) -> [PrintArgument] {
+    func makePrintArguments(from printStringArguments: [String]) -> [PrintArgument] {
         var printArguments: [PrintArgument] = []
 
         if printStringArguments.count == 0 {
