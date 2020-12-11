@@ -2,9 +2,11 @@ import Foundation
 
 public struct TickerValuesAPIDataRepository {
 
+    private let endpointFactory: EndpointFactoryPort
     private let networkingService: NetworkingServicePort
 
-    public init(networkingService: NetworkingServicePort = NetworkingService()) {
+    public init(endpointFactory: EndpointFactoryPort = EndpointFactory(),networkingService: NetworkingServicePort = NetworkingService()) {
+        self.endpointFactory = endpointFactory
         self.networkingService = networkingService
     }
 }
@@ -12,7 +14,7 @@ public struct TickerValuesAPIDataRepository {
 extension TickerValuesAPIDataRepository: TickerValuesAPIDataRepositoryPort {
 
     public func fetchTickerValuesAPIData(tickerIdentifier: String) -> TickerValuesAPIDataResponse? {
-        guard let url = EndpointFactory().makeValuesURL(for: tickerIdentifier) else {
+        guard let url = endpointFactory.makeValuesURL(for: tickerIdentifier) else {
             return nil
         }
 
