@@ -1,44 +1,26 @@
-import BitBay_TickerCore
-import Foundation
+struct Main {
 
-guard let tickerId = UserArguments.firstArgument else {
-    print("[Error] Wrong first argument...")
-    
-    exit(-1)
-}
+    private let application: ApplicationPort
+    private let exiter: ExiterPort
+    private let printer: PrinterPort
 
-guard var ticker = Ticker(id: tickerId) else {
-    print("[Error] Ticker identifier \"\(tickerId)\" is not valid...")
-    
-    exit(-1)
-}
-
-let printArgumentsStore = PrintArgumentsStore(userPrintArguments: UserArguments.printArguments)
-
-if printArgumentsStore.shouldFetchTickerValues {
-    guard let tickerValuesAPIResponse = TickerValuesAPIResponseFactory.makeTickerValuesAPIResponse(for: ticker.id) else {
-        print("[Error] Problem with fetching values from API...")
-        
-        exit(-1)
+    init(application: ApplicationPort = Application(),
+         printer: PrinterPort = Printer(),
+         exiter: ExiterPort = Exiter()) {
+        self.application = application
+        self.printer = printer
+        self.exiter = exiter
     }
-    
-    ticker.setUpValues(using: tickerValuesAPIResponse)
-}
 
-if printArgumentsStore.shouldFetchTickerValues {
-    guard let tickerStatisticsAPIResponse = TickerStatisticsAPIResponseFactory.makeTickerStatisticsAPIResponse(for: ticker.id) else {
-        print("[Error] Problem with fetching statistics from API...")
-        
-        exit(-1)
+    func start() {
+        let applicationResult = application.makeApplicationResult()
+
+        let applicationResultOutput = ApplicationResultOutputFactory().makeApplicationResultOutput(from: applicationResult)
+
+        printer.invokePrint(string: applicationResultOutput.outputString)
+        exiter.invokeExit(exitType: applicationResultOutput.exitType)
     }
-    
-    ticker.setUpStatistics(using: tickerStatisticsAPIResponse)
+
 }
 
-guard ticker.isAnyValueFilled else {
-    print("[Error] Ticker \"\(tickerId)\" is not supported...")
-    
-    exit(-1)
-}
-
-print(Printer.makePrettyDescription(for: ticker, printArguments: printArgumentsStore.printArguments))
+Main().start()
