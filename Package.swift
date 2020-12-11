@@ -4,12 +4,6 @@ import PackageDescription
 let package = Package(
     name: "BitBay-Ticker",
     
-    products: [
-        .executable(name: "BitBay-Ticker", targets: ["BitBay-Ticker"]),
-        .library(name: "BitBay-TickerCore", targets: ["BitBay-TickerCore"]),
-        .library(name: "BitBay-TickerMainHelpers", targets: ["BitBay-TickerMainHelpers"]),
-    ],
-
     dependencies: [],
 
     targets: [
