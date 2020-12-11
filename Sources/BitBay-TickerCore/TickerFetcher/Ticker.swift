@@ -1,4 +1,4 @@
-public struct Ticker {
+public struct Ticker: Equatable {
 
     let id: String
     let highestBid: Double?
