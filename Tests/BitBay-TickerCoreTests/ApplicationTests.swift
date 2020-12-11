@@ -47,37 +47,37 @@ final class ApplicationTests: XCTestCase {
 
 // MARK: - Helpers
 
-struct MockValidtorAlwaysValid: TickerIdentifierValidatorPort {
+private struct MockValidtorAlwaysValid: TickerIdentifierValidatorPort {
 
     func isValid(tickerIdentifier: String) -> Bool { true }
 
 }
 
-struct MockValidtorNeverValid: TickerIdentifierValidatorPort {
+private struct MockValidtorNeverValid: TickerIdentifierValidatorPort {
 
     func isValid(tickerIdentifier: String) -> Bool { false }
 
 }
 
-struct MockTickerOutputStringFactory : TickerOutputStringFactoryPort {
+private struct MockTickerOutputStringFactory : TickerOutputStringFactoryPort {
 
     func makePrintableString(ticker: Ticker, printArguments: [PrintArgument]) -> String { "TEST TICKER OUTPUT STRING" }
 
 }
 
-struct MockTickerFetcherReturningFetchingStatsDataError: TickerFetcherPort {
+private struct MockTickerFetcherReturningFetchingStatsDataError: TickerFetcherPort {
 
     func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .failure(TickerFetcherError.fetchingStatsData) }
 
 }
 
-struct MockTickerFetcherReturningFetchingValuesDataError: TickerFetcherPort {
+private struct MockTickerFetcherReturningFetchingValuesDataError: TickerFetcherPort {
 
     func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .failure(TickerFetcherError.fetchingValuesData) }
 
 }
 
-struct MockTickerFetcherReturningSuccess: TickerFetcherPort {
+private struct MockTickerFetcherReturningSuccess: TickerFetcherPort {
 
     func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .success(Ticker(id: "BTC-PLN", highestBid: 1, lowestAsk: nil, rate: nil, previousRate: nil, highestRate: nil, lowestRate: nil, volume: nil, average: nil)) }
 

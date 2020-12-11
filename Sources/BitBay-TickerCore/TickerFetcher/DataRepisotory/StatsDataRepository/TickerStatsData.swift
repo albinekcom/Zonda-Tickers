@@ -1,4 +1,4 @@
-public struct TickerStatsData {
+public struct TickerStatsData: Equatable {
 
     let highestRate: Double?
     let lowestRate: Double?

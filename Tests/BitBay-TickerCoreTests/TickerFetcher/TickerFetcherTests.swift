@@ -31,25 +31,25 @@ final class TickerFetcherTests: XCTestCase {
 
 // MARK: - Helpers
 
-struct MockTickerValuesDataReturningNil: TickerValuesDataRepositoryPort {
+private struct MockTickerValuesDataReturningNil: TickerValuesDataRepositoryPort {
 
     func fetchTickerValuesData(tickerIdentifier: String) -> TickerValuesData? { nil }
 
 }
 
-struct MockTickerValuesDataReturningData: TickerValuesDataRepositoryPort {
+private struct MockTickerValuesDataReturningData: TickerValuesDataRepositoryPort {
 
     func fetchTickerValuesData(tickerIdentifier: String) -> TickerValuesData? { TickerValuesData(highestBid: 1, lowestAsk: 2, rate: 3, previousRate: 4) }
 
 }
 
-struct MockTickerStatsDataReturningNil: TickerStatsDataRepositoryPort {
+private struct MockTickerStatsDataReturningNil: TickerStatsDataRepositoryPort {
 
     func fetchTickerStatsData(tickerIdentifier: String) -> TickerStatsData? { nil }
 
 }
 
-struct MockTickerStatsDataReturningData: TickerStatsDataRepositoryPort {
+private struct MockTickerStatsDataReturningData: TickerStatsDataRepositoryPort {
 
     func fetchTickerStatsData(tickerIdentifier: String) -> TickerStatsData? { TickerStatsData(highestRate: 5, lowestRate: 6, volume: 7, average: 8) }
 
