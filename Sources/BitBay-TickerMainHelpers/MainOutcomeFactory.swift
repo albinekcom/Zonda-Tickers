@@ -3,8 +3,13 @@ import Foundation
 
 public struct MainOutcome {
     
+    public enum ExitType: Int32 {
+        case success = 0
+        case fail = -1
+    }
+    
     public let text: String
-    public let exitCode: Int32
+    public let exitType: ExitType
     
 }
 
@@ -12,12 +17,12 @@ struct MainOutcomeFactory {
     
     func makeOutcome(fromApplicationResult applicationResult: Result<String, ApplicationError>) -> MainOutcome {
         let text: String
-        let exitCode: Int32
+        let exitType: MainOutcome.ExitType
 
         switch applicationResult {
             case .success(let outputString):
                 text = outputString
-                exitCode = 0
+                exitType = .success
 
             case .failure(let error):
                 switch error {
@@ -31,10 +36,10 @@ struct MainOutcomeFactory {
                     text = "Error: cannot fetch ticker values"
                 }
 
-                exitCode = 1
+                exitType = .fail
             }
 
-        return MainOutcome(text: text, exitCode: exitCode)
+        return MainOutcome(text: text, exitType: exitType)
     }
     
 }

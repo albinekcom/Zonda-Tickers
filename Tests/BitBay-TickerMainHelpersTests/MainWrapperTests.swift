@@ -16,7 +16,7 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("SUCCESS TEST TEXT", outcome.text)
-        XCTAssertEqual(0, outcome.exitCode)
+        XCTAssertEqual(.success, outcome.exitType)
         
     }
     
@@ -32,7 +32,7 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("Error: wrong ticker identifier", outcome.text)
-        XCTAssertEqual(1, outcome.exitCode)
+        XCTAssertEqual(.fail, outcome.exitType)
         
     }
     
@@ -48,7 +48,7 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("Error: ticker identifier \"BTC-PLN\" is not valid", outcome.text)
-        XCTAssertEqual(1, outcome.exitCode)
+        XCTAssertEqual(.fail, outcome.exitType)
         
     }
     
@@ -65,7 +65,7 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("Error: cannot fetch ticker values", outcome.text)
-        XCTAssertEqual(1, outcome.exitCode)
+        XCTAssertEqual(.fail, outcome.exitType)
         
     }
     
@@ -82,7 +82,7 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("Error: cannot fetch ticker statistics", outcome.text)
-        XCTAssertEqual(1, outcome.exitCode)
+        XCTAssertEqual(.fail, outcome.exitType)
         
     }
 
