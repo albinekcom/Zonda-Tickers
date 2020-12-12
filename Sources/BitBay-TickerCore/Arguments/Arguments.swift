@@ -11,7 +11,7 @@ public struct Arguments {
 extension Arguments: ArgumentsPort {
 
     public var tickerIdentifier: String? {
-        stringArguments.dropFirst().first?.uppercased()
+        stringArguments.dropFirst().first
     }
 
     public var printArguments: [PrintArgument] {

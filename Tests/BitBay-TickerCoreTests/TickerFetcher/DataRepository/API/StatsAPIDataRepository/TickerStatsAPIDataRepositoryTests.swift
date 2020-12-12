@@ -19,6 +19,14 @@ final class TickerStatsAPIDataRepositoryTests: XCTestCase {
         XCTAssertNil(tickerStatsAPIDataResponse)
     }
     
+    func testJSONWithAPIError() {
+        let tickerStatsAPIDataRepository = TickerStatsAPIDataRepository(endpointFactory: MockEndpointFactoryReturningProperURLs(), networkingService: MockServicetReturningErrorData())
+        
+        let tickerStatsAPIDataResponse = tickerStatsAPIDataRepository.fetchTickerStatsAPIData(tickerIdentifier: "BTC-PLN2")
+        
+        XCTAssertNil(tickerStatsAPIDataResponse)
+    }
+    
     func testReturningTickerStatsAPIDataResponse() {
         let tickerStatsAPIDataRepository = TickerStatsAPIDataRepository(endpointFactory: MockEndpointFactoryReturningProperURLs(), networkingService: MockServicetReturningProperData())
         
@@ -36,6 +44,18 @@ private struct MockServicetReturningProperData: NetworkingServicePort {
     func fetchData(url: URL) -> Data? {
         let jsonTickerValuesString = """
             {"status":"Ok","stats":{"m":"BTC-PLN","h":"1","l":"2","v":"3","r24h":"4"}}
+        """
+        
+        return jsonTickerValuesString.data(using: .utf8)
+    }
+    
+}
+
+private struct MockServicetReturningErrorData: NetworkingServicePort {
+
+    func fetchData(url: URL) -> Data? {
+        let jsonTickerValuesString = """
+            {"status":"Fail","errors":["STATS_COULD_NOT_BE_LOADED"]}
         """
         
         return jsonTickerValuesString.data(using: .utf8)

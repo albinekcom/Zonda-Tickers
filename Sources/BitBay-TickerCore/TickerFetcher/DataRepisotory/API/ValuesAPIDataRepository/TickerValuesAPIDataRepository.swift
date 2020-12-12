@@ -21,7 +21,11 @@ extension TickerValuesAPIDataRepository: TickerValuesAPIDataRepositoryPort {
         guard let jsonData = networkingService.fetchData(url: url) else {
             return nil
         }
-
+        
+        if let tickerPropertiesAPIErrorResponse = try? JSONDecoder().decode(TickerPropertiesAPIErrorResponse.self, from: jsonData), tickerPropertiesAPIErrorResponse.isFail {
+            return nil
+        }
+        
         return try? JSONDecoder().decode(TickerValuesAPIDataResponse.self, from: jsonData)
     }
 

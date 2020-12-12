@@ -1,9 +1,8 @@
-public enum ApplicationError: Error {
+public enum ApplicationError: Error, Equatable {
     case wrongTickerIdentifier
-    case tickerIdentifierIsNotValid
+    case tickerIdentifierIsNotValid(tickerIdentifier: String)
     case fetchingValuesIssue
     case fetchingStatisticsIssue
-    case tickerIdentifierIsNotSupported
 }
 
 public struct Application {
@@ -31,7 +30,7 @@ extension Application: ApplicationPort {
         }
 
         guard tickerIdentifierValidator.isValid(tickerIdentifier: tickerIdentifier) else {
-            return .failure(ApplicationError.tickerIdentifierIsNotValid)
+            return .failure(ApplicationError.tickerIdentifierIsNotValid(tickerIdentifier: tickerIdentifier))
         }
         
         let shouldFetchPropertiesFactory = ShouldFetchPropertiesFactory(printArguments: arguments.printArguments)

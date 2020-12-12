@@ -39,7 +39,7 @@ final class MainWrapperTests: XCTestCase {
     func testMainOutcomeForApplicationFailureTickerIdentifierIsNotValid() {
         struct MockApplication: ApplicationPort {
             func makeApplicationResult(userStringArguments: [String]) -> Result<String, ApplicationError> {
-                .failure(ApplicationError.tickerIdentifierIsNotValid)
+                .failure(ApplicationError.tickerIdentifierIsNotValid(tickerIdentifier: "BTC-PLN"))
             }
         }
         
@@ -47,7 +47,7 @@ final class MainWrapperTests: XCTestCase {
         
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
-        XCTAssertEqual("Error: ticker identifier is not valid", outcome.text)
+        XCTAssertEqual("Error: ticker identifier \"BTC-PLN\" is not valid", outcome.text)
         XCTAssertEqual(1, outcome.exitCode)
         
     }
@@ -82,22 +82,6 @@ final class MainWrapperTests: XCTestCase {
         let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
         
         XCTAssertEqual("Error: cannot fetch ticker statistics", outcome.text)
-        XCTAssertEqual(1, outcome.exitCode)
-        
-    }
-    
-    func testMainOutcomeForApplicationFailureTickerIdentifierIsNotSupported() {
-        struct MockApplication: ApplicationPort {
-            func makeApplicationResult(userStringArguments: [String]) -> Result<String, ApplicationError> {
-                .failure(ApplicationError.tickerIdentifierIsNotSupported)
-            }
-        }
-        
-        let mainWrapper = MainWrapper(application: MockApplication())
-        
-        let outcome = mainWrapper.makeMainOutcome(userStringArguments: [])
-        
-        XCTAssertEqual("Error: ticker identifier is not supported", outcome.text)
         XCTAssertEqual(1, outcome.exitCode)
         
     }

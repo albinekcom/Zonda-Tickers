@@ -16,7 +16,7 @@ final class ApplicationTests: XCTestCase {
         
         let result = application.makeApplicationResult(userStringArguments: ["ApplicationName", "BTC-PLN"])
         
-        XCTAssertEqual(.failure(ApplicationError.tickerIdentifierIsNotValid), result)   
+        XCTAssertEqual(.failure(ApplicationError.tickerIdentifierIsNotValid(tickerIdentifier: "BTC-PLN")), result)   
     }
     
     func testReturningtErrorFetchingValuesIssue() throws {

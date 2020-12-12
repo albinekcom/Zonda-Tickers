@@ -7,7 +7,7 @@ public struct TickerOutputStringFactory {
 extension TickerOutputStringFactory: TickerOutputStringFactoryPort {
 
     public func makePrintableString(ticker: Ticker, printArguments: [PrintArgument]) -> String {
-        let tickerString = "Ticker \(ticker.id)"
+        let tickerString = "Ticker \(ticker.id.uppercased())"
 
         let valuesString = printArguments.map { TickerOutputComponentFactory().makesTickerOutputComponent(ticker: ticker, printArgument: $0).description }.joined(separator: ", ")
 

@@ -25,12 +25,10 @@ struct MainOutcomeFactory {
                     text = "Error: cannot fetch ticker statistics"
                 case .wrongTickerIdentifier:
                     text = "Error: wrong ticker identifier"
-                case .tickerIdentifierIsNotValid:
-                    text = "Error: ticker identifier is not valid"
+                case .tickerIdentifierIsNotValid(let tickerIdentifier):
+                    text = "Error: ticker identifier \"\(tickerIdentifier)\" is not valid"
                 case .fetchingValuesIssue:
                     text = "Error: cannot fetch ticker values"
-                case .tickerIdentifierIsNotSupported:
-                    text = "Error: ticker identifier is not supported"
                 }
 
                 exitCode = 1
