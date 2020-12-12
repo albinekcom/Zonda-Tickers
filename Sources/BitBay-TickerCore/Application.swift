@@ -33,8 +33,10 @@ extension Application: ApplicationPort {
         guard tickerIdentifierValidator.isValid(tickerIdentifier: tickerIdentifier) else {
             return .failure(ApplicationError.tickerIdentifierIsNotValid)
         }
-
-        let fetcherResult = tickerFetcher.fetchTicker(tickerIdentifier: tickerIdentifier)
+        
+        let shouldFetchPropertiesFactory = ShouldFetchPropertiesFactory(printArguments: arguments.printArguments)
+        
+        let fetcherResult = tickerFetcher.fetchTicker(tickerIdentifier: tickerIdentifier, shouldFetchValues: shouldFetchPropertiesFactory.shouldFetchValues, shouldFetchStats: shouldFetchPropertiesFactory.shouldFetchStats)
 
         switch fetcherResult {
             case .success(let ticker):

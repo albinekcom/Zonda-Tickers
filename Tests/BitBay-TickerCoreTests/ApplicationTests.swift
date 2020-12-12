@@ -66,19 +66,25 @@ private struct MockTickerOutputStringFactory : TickerOutputStringFactoryPort {
 }
 
 private struct MockTickerFetcherReturningFetchingStatsDataError: TickerFetcherPort {
-
-    func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .failure(TickerFetcherError.fetchingStatsData) }
+    
+    func fetchTicker(tickerIdentifier: String, shouldFetchValues: Bool, shouldFetchStats: Bool) -> Result<Ticker, TickerFetcherError> {
+        .failure(TickerFetcherError.fetchingStatsData)
+    }
 
 }
 
 private struct MockTickerFetcherReturningFetchingValuesDataError: TickerFetcherPort {
-
-    func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .failure(TickerFetcherError.fetchingValuesData) }
-
+    
+    func fetchTicker(tickerIdentifier: String, shouldFetchValues: Bool, shouldFetchStats: Bool) -> Result<Ticker, TickerFetcherError> {
+        .failure(TickerFetcherError.fetchingValuesData)
+    }
+    
 }
 
 private struct MockTickerFetcherReturningSuccess: TickerFetcherPort {
-
-    func fetchTicker(tickerIdentifier: String) -> Result<Ticker, TickerFetcherError> { .success(Ticker(id: "BTC-PLN", highestBid: 1, lowestAsk: nil, rate: nil, previousRate: nil, highestRate: nil, lowestRate: nil, volume: nil, average: nil)) }
-
+    
+    func fetchTicker(tickerIdentifier: String, shouldFetchValues: Bool, shouldFetchStats: Bool) -> Result<Ticker, TickerFetcherError> {
+        .success(Ticker(id: "BTC-PLN", highestBid: 1, lowestAsk: nil, rate: nil, previousRate: nil, highestRate: nil, lowestRate: nil, volume: nil, average: nil))
+    }
+    
 }

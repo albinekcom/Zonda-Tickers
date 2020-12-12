@@ -2,11 +2,19 @@ import XCTest
 @testable import BitBay_TickerCore
 
 final class TickerFetcherTests: XCTestCase {
+    
+    func testFetcherWithAvoidingFetching() throws {
+        let tickerFetcher = TickerFetcher(valuesDataRepository: MockTickerValuesDataReturningData(), statsDataRepository: MockTickerStatsDataReturningData())
+        
+        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN", shouldFetchValues: false, shouldFetchStats: false)
+        
+        XCTAssertEqual(.success(Ticker(id: "BTC-PLN", highestBid: nil, lowestAsk: nil, rate: nil, previousRate: nil, highestRate: nil, lowestRate: nil, volume: nil, average: nil)), result)
+    }
 
     func testReturningFetchingValuesDataError() throws {
         let tickerFetcher = TickerFetcher(valuesDataRepository: MockTickerValuesDataReturningNil(), statsDataRepository: MockTickerStatsDataReturningData())
         
-        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN")
+        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN", shouldFetchValues: true, shouldFetchStats: false)
         
         XCTAssertEqual(.failure(TickerFetcherError.fetchingValuesData), result)
     }
@@ -14,7 +22,7 @@ final class TickerFetcherTests: XCTestCase {
     func testReturningFetchingStatsDataError() throws {
         let tickerFetcher = TickerFetcher(valuesDataRepository: MockTickerValuesDataReturningData(), statsDataRepository: MockTickerStatsDataReturningNil())
         
-        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN")
+        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN", shouldFetchValues: false, shouldFetchStats: true)
         
         XCTAssertEqual(.failure(TickerFetcherError.fetchingStatsData), result)
     }
@@ -22,7 +30,7 @@ final class TickerFetcherTests: XCTestCase {
     func testReturningSuccess() throws {
         let tickerFetcher = TickerFetcher(valuesDataRepository: MockTickerValuesDataReturningData(), statsDataRepository: MockTickerStatsDataReturningData())
         
-        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN")
+        let result = tickerFetcher.fetchTicker(tickerIdentifier: "BTC-PLN", shouldFetchValues: true, shouldFetchStats: true)
         
         XCTAssertEqual(.success(Ticker(id: "BTC-PLN", highestBid: 1, lowestAsk: 2, rate: 3, previousRate: 4, highestRate: 5, lowestRate: 6, volume: 7, average: 8)), result)
     }
