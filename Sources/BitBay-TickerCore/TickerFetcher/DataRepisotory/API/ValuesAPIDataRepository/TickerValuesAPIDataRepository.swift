@@ -5,7 +5,7 @@ public struct TickerValuesAPIDataRepository {
     private let endpointFactory: EndpointFactoryPort
     private let networkingService: NetworkingServicePort
 
-    public init(endpointFactory: EndpointFactoryPort = EndpointFactory(),networkingService: NetworkingServicePort = NetworkingService()) {
+    public init(endpointFactory: EndpointFactoryPort = EndpointFactory(), networkingService: NetworkingServicePort = NetworkingService()) {
         self.endpointFactory = endpointFactory
         self.networkingService = networkingService
     }

@@ -12,7 +12,7 @@ public struct Application {
     private let tickerOutputStringFactory: TickerOutputStringFactoryPort
 
     public init(tickerIdentifierValidator: TickerIdentifierValidatorPort = TickerIdentifierValidator(),
-                tickerFetcher: TickerFetcherPort = TickerFetcher(),
+                tickerFetcher: TickerFetcherPort = TickerAPIFetcher(),
                 tickerOutputStringFactory: TickerOutputStringFactoryPort = TickerOutputStringFactory()) {
         self.tickerIdentifierValidator = tickerIdentifierValidator
         self.tickerFetcher = tickerFetcher

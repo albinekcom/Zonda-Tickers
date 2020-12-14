@@ -10,9 +10,7 @@ public struct TickerIdentifierValidator {
 
     private let regularExpressionPattern = #"^[^-]+-[^-]+$"#
 
-    public init() {
-
-    }
+    public init() {}
 
 }
 
