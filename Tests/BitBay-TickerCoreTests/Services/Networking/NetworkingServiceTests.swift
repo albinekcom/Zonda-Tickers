@@ -3,26 +3,74 @@ import XCTest
 
 final class NetworkingServiceTests: XCTestCase {
     
-    func testFetchingTickerValuesJSONFromAPI() throws {
-        let url = URL(string: "https://api.bitbay.net/rest/trading/ticker/BTC-PLN")!
-        
-        let apiTickerValuesResponseJSON = NetworkingService().fetchData(url: url)
-        
-        XCTAssertNotNil(apiTickerValuesResponseJSON)
-    }
+    private let url = URL(string: "https://example.test")!
     
-    func testFetchingTickerStatisticsJSONFromAPI() throws {
-        let url = URL(string: "https://api.bitbay.net/rest/trading/stats/BTC-PLN")!
-        
-        let apiTickerStatisticsResponseJSON = NetworkingService().fetchData(url: url)
+    func testFetchingSomeData() throws {
+        let fetchingResult = NetworkingService(session: MockURLSessionWithSomeData()).fetchData(url: url)
 
-        XCTAssertNotNil(apiTickerStatisticsResponseJSON)
+        XCTAssertNotNil(fetchingResult)
     }
     
-    func testFetchingExternalDataFail() throws {
-        let externalData = NetworkingService().fetchData(url: URL(string: "https://TEST.THIS.WRONG.ADDRESS/BTC-PLN")!)
+    func testFetchingNilData() throws {
+        let fetchingResult = NetworkingService(session: MockURLSessionWithNilData()).fetchData(url: url)
         
-        XCTAssertNil(externalData)
+        XCTAssertNil(fetchingResult)
+    }
+    
+}
+
+// MARK: - Helpers
+
+final class MockURLSessionWithNilData: URLSession {
+    
+    final class MockURLSessionDataTaskWitNilData: URLSessionDataTask {
+
+        private let completion: (Data?, URLResponse?, Error?) -> Void
+
+        init(completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+            self.completion = completion
+        }
+
+        override func resume() {
+            completion(nil, nil, nil)
+        }
+    }
+    
+    init(configuration: URLSessionConfiguration = .default) {}
+    
+    override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        MockURLSessionDataTaskWitNilData(completion: completionHandler)
+    }
+    
+}
+
+final class MockURLSessionWithSomeData: URLSession {
+    
+    final class MockURLSessionDataTaskWithSomeData: URLSessionDataTask {
+
+        private let completion: (Data?, URLResponse?, Error?) -> Void
+
+        init(completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+            self.completion = completion
+        }
+
+        override func resume() {
+            let jsonTestDataString = """
+                {"status":"THIS IS SOME TEST DATA"}
+            """
+            
+            let someData = jsonTestDataString.data(using: .utf8)
+            
+            completion(someData, nil, nil)
+        }
+    }
+
+
+    
+    init(configuration: URLSessionConfiguration = .default) {}
+    
+    override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        MockURLSessionDataTaskWithSomeData(completion: completionHandler)
     }
     
 }

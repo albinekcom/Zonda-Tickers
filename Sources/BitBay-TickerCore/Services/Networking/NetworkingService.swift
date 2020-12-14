@@ -2,14 +2,28 @@ import Foundation
 
 public struct NetworkingService {
 
-    public init() {}
+    private let session: URLSession
+    
+    public init(session: URLSession = URLSession.shared) {
+        self.session = session
+    }
 
 }
 
 extension NetworkingService: NetworkingServicePort {
-
+    
     public func fetchData(url: URL) -> Data? {
-        try? Data(contentsOf: url)
+        var fetchedData: Data? = nil
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        session.dataTask(with: url) { (data, response, error) in
+            fetchedData = data
+            semaphore.signal()
+        }.resume()
+        
+        semaphore.wait()
+        
+        return fetchedData
     }
 
 }
