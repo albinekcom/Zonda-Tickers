@@ -1,20 +1,19 @@
-import BitBay_TickerCore
 import Foundation
 
 public struct MainOutcome {
-    
+
     public enum ExitType: Int32 {
         case success = 0
         case fail = -1
     }
-    
+
     public let text: String
     public let exitType: ExitType
-    
+
 }
 
 struct MainOutcomeFactory {
-    
+
     func makeOutcome(fromApplicationResult applicationResult: Result<String, ApplicationError>) -> MainOutcome {
         let text: String
         let exitType: MainOutcome.ExitType
@@ -41,5 +40,5 @@ struct MainOutcomeFactory {
 
         return MainOutcome(text: text, exitType: exitType)
     }
-    
+
 }

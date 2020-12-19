@@ -1,4 +1,4 @@
-import BitBay_TickerMainHelpers
+import BitBay_TickerCore
 import Foundation
 
 let mainOutcome = MainWrapper().makeMainOutcome(userStringArguments: CommandLine.arguments)

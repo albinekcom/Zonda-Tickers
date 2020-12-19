@@ -10,19 +10,13 @@ let package = Package(
         .target(
             name: "BitBay-TickerCore",
             dependencies: []),
-        .target(
-            name: "BitBay-TickerMainHelpers",
-            dependencies: ["BitBay-TickerCore"]),
 
         .target(
             name: "BitBay-Ticker",
-            dependencies: ["BitBay-TickerMainHelpers"]),
+            dependencies: ["BitBay-TickerCore"]),
 
         .testTarget(
             name: "BitBay-TickerCoreTests",
-            dependencies: ["BitBay-TickerCore"]),
-        .testTarget(
-            name: "BitBay-TickerMainHelpersTests",
-            dependencies: ["BitBay-TickerMainHelpers"])
+            dependencies: ["BitBay-TickerCore"])
     ]
 )
