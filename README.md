@@ -1,7 +1,7 @@
 # BitBay Ticker
 
 ![Swift 5.3](https://img.shields.io/badge/Swift-5.3-orange.svg)
-[![Build Status](https://travis-ci.org/albinekcom/BitBay-Ticker.svg?branch=master)](https://travis-ci.org/albinekcom/BitBay-Ticker)
+[![Build Status](https://travis-ci.com/albinekcom/BitBay-Ticker.svg?branch=master)](https://travis-ci.com/albinekcom/BitBay-Ticker)
 [![codecov](https://codecov.io/gh/albinekcom/BitBay-Ticker/branch/master/graph/badge.svg?token=kzbdtJy7IW)](https://codecov.io/gh/albinekcom/BitBay-Ticker)
 
 This is a command line tool to receive ticker information using [BitBay Public Trading API](https://docs.bitbay.net/reference).
