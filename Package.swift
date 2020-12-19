@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "BitBay-Ticker",
-    
+
     dependencies: [],
 
     targets: [
@@ -13,16 +13,16 @@ let package = Package(
         .target(
             name: "BitBay-TickerMainHelpers",
             dependencies: ["BitBay-TickerCore"]),
-        
+
         .target(
             name: "BitBay-Ticker",
             dependencies: ["BitBay-TickerMainHelpers"]),
-        
+
         .testTarget(
             name: "BitBay-TickerCoreTests",
             dependencies: ["BitBay-TickerCore"]),
         .testTarget(
             name: "BitBay-TickerMainHelpersTests",
-            dependencies: ["BitBay-TickerMainHelpers", "BitBay-TickerCoreTests"])
+            dependencies: ["BitBay-TickerMainHelpers"])
     ]
 )
