@@ -99,6 +99,14 @@ final class ArgumentsTests: XCTestCase {
         XCTAssertEqual([.average, .rate], arguments.printArguments)
     }
     
+    func testParsingTwoStringArgumentsWithDifferentLettersCasesToTwoPrintArguments() {
+        let input = ["BitBay-Ticker", "BTC-PLN", "--aVerAgE", "--RAte"]
+        
+        let arguments = Arguments(stringArguments: input)
+        
+        XCTAssertEqual([.average, .rate], arguments.printArguments)
+    }
+    
     func testMappingEmptyStringArgumentsToAllPrintArguments() {
         let input = ["BitBay-Ticker"]
         

@@ -1,11 +1,11 @@
 public enum PrintArgument: String, CaseIterable {
 
-    case highestBid = "--highestBid"
-    case lowestAsk = "--lowestAsk"
+    case highestBid = "--highestbid"
+    case lowestAsk = "--lowestask"
     case rate = "--rate"
-    case previousRate = "--previousRate"
-    case highestRate = "--highestRate"
-    case lowestRate = "--lowestRate"
+    case previousRate = "--previousrate"
+    case highestRate = "--highestrate"
+    case lowestRate = "--lowestrate"
     case volume = "--volume"
     case average = "--average"
 

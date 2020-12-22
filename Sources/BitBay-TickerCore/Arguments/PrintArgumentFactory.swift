@@ -13,6 +13,6 @@ struct PrintArgumentFactory {
     }
 
     private func makePrintArgument(from printStringArgument: String) -> PrintArgument? {
-        PrintArgument(rawValue: printStringArgument)
+        PrintArgument(rawValue: printStringArgument.lowercased())
     }
 }
