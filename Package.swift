@@ -8,8 +8,7 @@ let package = Package(
 
     targets: [
         .target(
-            name: "BitBay-TickerCore",
-            dependencies: []),
+            name: "BitBay-TickerCore"),
 
         .target(
             name: "BitBay-Ticker",

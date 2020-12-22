@@ -3,7 +3,7 @@ struct PrintArgumentFactory {
     func makePrintArguments(from printStringArguments: [String]) -> [PrintArgument] {
         var printArguments: [PrintArgument] = []
 
-        if printStringArguments.count == 0 {
+        if printStringArguments.isEmpty {
             printArguments = [.highestBid, .lowestAsk, .rate, .previousRate, .highestRate, .lowestRate, .volume, .average]
         } else {
             printArguments = printStringArguments.compactMap { makePrintArgument(from: $0) }
