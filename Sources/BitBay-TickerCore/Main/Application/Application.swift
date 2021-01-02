@@ -1,3 +1,5 @@
+import Foundation
+
 public enum ApplicationError: Error, Equatable {
     case wrongTickerIdentifier
     case tickerIdentifierIsNotValid(tickerIdentifier: String)
@@ -13,7 +15,7 @@ public struct Application {
 
     public init(tickerIdentifierValidator: TickerIdentifierValidatorPort = TickerIdentifierValidator(),
                 tickerFetcher: TickerFetcherPort = TickerAPIFetcher(),
-                tickerOutputStringFactory: TickerOutputStringFactoryPort = TickerOutputStringFactory()) {
+                tickerOutputStringFactory: TickerOutputStringFactoryPort = TickerOutputStringFactory(locale: Locale.current)) {
         self.tickerIdentifierValidator = tickerIdentifierValidator
         self.tickerFetcher = tickerFetcher
         self.tickerOutputStringFactory = tickerOutputStringFactory
