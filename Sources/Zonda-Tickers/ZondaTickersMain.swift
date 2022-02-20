@@ -1,5 +1,3 @@
-import Foundation
-
 @main
 struct ZondaTickersMain {
 
