@@ -4,10 +4,7 @@ import Foundation
 struct ZondaTickersMain {
 
     static func main() async {
-        var argumentStrings = CommandLine.arguments
-        argumentStrings.removeFirst()
-        
-        let userArguments = UserArguments(argumentStrings: argumentStrings)
+        let userArguments = UserArguments(argumentStrings: Array(CommandLine.arguments.dropFirst()))
         
         do {
             try await TickersRepository().loadTickers(tickerIds: userArguments.tickerIds,
@@ -19,7 +16,7 @@ struct ZondaTickersMain {
             print("Error: \(error.localizedDescription)")
         }
     }
-
+    
 }
 
 // TODO: Add unit tests for "ValueFormatter"

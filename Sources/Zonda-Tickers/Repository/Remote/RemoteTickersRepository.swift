@@ -1,6 +1,6 @@
 import Foundation
 
-final class RemoteTickersRepository {
+struct RemoteTickersRepository {
 
     private let urlSession: URLSession
     private let jsonDecoder: JSONDecoder
