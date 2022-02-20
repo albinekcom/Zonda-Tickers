@@ -4,7 +4,7 @@ import Foundation
 struct ZondaTickersMain {
 
     static func main() async {
-        let userArguments = UserArguments(argumentStrings: CommandLine.arguments)
+        let userArguments = UserArguments(argumentStrings: [CommandLine.arguments.removeFirst()])
 
         do {
             try await TickersRepository().loadTickers(tickerIds: userArguments.tickerIds,
