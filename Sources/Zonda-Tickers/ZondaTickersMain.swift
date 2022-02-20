@@ -20,7 +20,6 @@ struct ZondaTickersMain {
 }
 
 // TODO: Add unit tests for "ValueFormatter"
-// TODO: Add unit tests for "Ticker"
 // TODO: Add unit tests for "Ticker+OutputString"
 // TODO: Add unit tests for "TickersFactory"
 // TODO: Add unit tests for "UserArguments"
