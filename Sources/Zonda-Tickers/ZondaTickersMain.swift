@@ -1,12 +1,11 @@
 import Foundation
 
-@available(macOS 12, *)
 @main
 struct ZondaTickersMain {
-    
+
     static func main() async {
         let userArguments = UserArguments(argumentStrings: CommandLine.arguments)
-        
+
         do {
             try await TickersRepository().loadTickers(tickerIds: userArguments.tickerIds,
                                                       shouldLoadValues: userArguments.shouldLoadValues,
@@ -17,7 +16,7 @@ struct ZondaTickersMain {
             print("Error: \(error.localizedDescription)")
         }
     }
-    
+
 }
 
 // TODO: Fix fractionalDigits in "ValueFormatter", --volume paramater
