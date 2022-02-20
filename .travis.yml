@@ -5,11 +5,10 @@ os:
   - osx
 
 osx_image:
-  - xcode12.2
+  - xcode13.2
 
 script:
-  - swift package generate-xcodeproj
-  - xcodebuild test -scheme BitBay-Ticker -destination platform="macOS" -enableCodeCoverage YES
+  - swift test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
