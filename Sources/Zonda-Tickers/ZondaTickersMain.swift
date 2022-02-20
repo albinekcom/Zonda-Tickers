@@ -19,7 +19,6 @@ struct ZondaTickersMain {
 
 }
 
-// TODO: Fix fractionalDigits in "ValueFormatter", --volume paramater
 // TODO: Add unit tests for "ValueFormatter"
 // TODO: Add unit tests for "Ticker"
 // TODO: Add unit tests for "Ticker+OutputString"

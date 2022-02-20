@@ -2,23 +2,22 @@ import Foundation
 
 struct ValueFormatter {
     
-    private let numberFormatter: NumberFormatter
+    private let locale: Locale
     
     init(locale: Locale) {
-        self.numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.locale = locale
+        self.locale = locale
     }
     
     func string(from value: Double?, fractionDigits: Int? = nil) -> String {
         guard let value = value else { return  "-" }
         
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.locale = locale
+        
         if let fractionDigits = fractionDigits {
             numberFormatter.minimumFractionDigits = fractionDigits
             numberFormatter.maximumFractionDigits = fractionDigits
-        } else {
-            numberFormatter.minimumFractionDigits = 0
-            numberFormatter.maximumFractionDigits = 0
         }
         
         return numberFormatter.string(from: NSNumber(value: value)) ?? "-"
