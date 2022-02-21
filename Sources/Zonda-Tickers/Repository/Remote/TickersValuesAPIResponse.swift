@@ -7,7 +7,7 @@ struct TickersValuesAPIResponse: Decodable {
             struct Currency: Decodable {
                 
                 let currency: String
-                let minOffer: String
+                let minOffer: String?
                 let scale: Int
                 
             }
@@ -19,7 +19,7 @@ struct TickersValuesAPIResponse: Decodable {
         }
         
         let market: Market
-        let time: String
+        let time: String?
         let highestBid: String?
         let lowestAsk: String?
         let rate: String?

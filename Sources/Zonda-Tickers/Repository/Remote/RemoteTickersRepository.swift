@@ -2,12 +2,10 @@ import Foundation
 
 struct RemoteTickersRepository {
 
-    private let urlSession: URLSession
-    private let jsonDecoder: JSONDecoder
+    private let urlSessionData: URLSessionData
 
-    init(urlSession: URLSession = URLSession.shared, jsonDecoder: JSONDecoder = JSONDecoder()) {
-        self.urlSession = urlSession
-        self.jsonDecoder = jsonDecoder
+    init(urlSessionData: URLSessionData = URLSession.shared) {
+        self.urlSessionData = urlSessionData
     }
 
     func fetchTickersValues(shouldFetch: Bool) async throws -> TickersValuesAPIResponse? {
@@ -19,9 +17,17 @@ struct RemoteTickersRepository {
     }
 
     private func fetch<T: Decodable>(from endpoint: Endpoint) async throws -> T {
-        let (data, _) = try await urlSession.data(from: endpoint.url)
+        let (data, _) = try await urlSessionData.data(from: endpoint.url, delegate: nil)
 
-        return try jsonDecoder.decode(T.self, from: data)
+        return try JSONDecoder().decode(T.self, from: data)
     }
 
 }
+
+protocol URLSessionData {
+    
+    func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
+    
+}
+
+extension URLSession: URLSessionData {}
