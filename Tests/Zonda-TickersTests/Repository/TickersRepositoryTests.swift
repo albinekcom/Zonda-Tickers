@@ -31,7 +31,7 @@ final class TickersRepositoryTests: XCTestCase {
 
 // MARK: - Helpers
 
-final class RemoteTickersRepositoryStub: AnyRemoteTickersRepository {
+private struct RemoteTickersRepositoryStub: AnyRemoteTickersRepository {
     
     func fetchTickersValues(shouldFetch: Bool) async throws -> TickersValuesAPIResponse? { nil }
 

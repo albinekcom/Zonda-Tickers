@@ -1,17 +1,20 @@
 @main
 struct ZondaTickersMain {
+    
+    static var tickersRepositoryType: AnyTickersRepository.Type = TickersRepository.self
+    static var printer: Printer.Type = SystemPrinter.self
 
     static func main() async {
         let userArguments = UserArguments(argumentStrings: Array(CommandLine.arguments.dropFirst()))
         
         do {
-            try await TickersRepository().loadTickers(tickerIds: userArguments.tickerIds,
-                                                      shouldLoadValues: userArguments.shouldLoadValues,
-                                                      shouldLoadStatistics: userArguments.shouldLoadStatistics).forEach {
-                print($0.outputString(printArguments: userArguments.printArguments))
+            try await tickersRepositoryType.init().loadTickers(tickerIds: userArguments.tickerIds,
+                                                               shouldLoadValues: userArguments.shouldLoadValues,
+                                                               shouldLoadStatistics: userArguments.shouldLoadStatistics).forEach {
+                printer.display(text: $0.outputString(printArguments: userArguments.printArguments))
             }
         } catch let error {
-            print("Error: \(error.localizedDescription)")
+            printer.display(text: "Error: \(error.localizedDescription)")
         }
     }
     

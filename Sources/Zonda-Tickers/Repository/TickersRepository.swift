@@ -1,8 +1,19 @@
-struct TickersRepository {
+protocol AnyTickersRepository {
+    
+    init()
+    func loadTickers(tickerIds: [String], shouldLoadValues: Bool, shouldLoadStatistics: Bool) async throws -> [Ticker]
+
+}
+
+struct TickersRepository: AnyTickersRepository {
 
     private let remoteTickersRepository: AnyRemoteTickersRepository
+    
+    init() {
+        self.remoteTickersRepository = RemoteTickersRepository()
+    }
 
-    init(remoteTickersRepository: AnyRemoteTickersRepository = RemoteTickersRepository()) {
+    init(remoteTickersRepository: AnyRemoteTickersRepository) {
         self.remoteTickersRepository = remoteTickersRepository
     }
 
