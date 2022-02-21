@@ -23,15 +23,8 @@ final class TickerTests: XCTestCase {
     
     private func ticker(tickerId: String) -> Ticker {
         .init(id: tickerId,
-              counterCurrencyScale: 0,
-              highestBid: nil,
-              lowestAsk: nil,
-              rate: nil,
-              previousRate: nil,
-              highestRate: nil,
-              lowestRate: nil,
-              volume: nil,
-              average: nil)
+              apiTickerValuesItem: nil,
+              apiTickerStatisticsItem: nil)
     }
 
 }
