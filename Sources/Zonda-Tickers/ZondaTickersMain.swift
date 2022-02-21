@@ -16,6 +16,3 @@ struct ZondaTickersMain {
     }
     
 }
-
-// TODO: Add unit tests for "TickersRepository"
-// TODO: Add unit tests for "ZondaTickersMain"

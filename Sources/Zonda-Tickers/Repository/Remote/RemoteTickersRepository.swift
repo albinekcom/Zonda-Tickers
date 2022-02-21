@@ -1,6 +1,14 @@
 import Foundation
 
-struct RemoteTickersRepository {
+protocol AnyRemoteTickersRepository {
+    
+    func fetchTickersValues(shouldFetch: Bool) async throws -> TickersValuesAPIResponse?
+
+    func fetchTickersStatistics(shouldFetch: Bool) async throws -> TickersStatisticsAPIResponse?
+    
+}
+
+struct RemoteTickersRepository: AnyRemoteTickersRepository {
 
     private let urlSessionData: URLSessionData
 
