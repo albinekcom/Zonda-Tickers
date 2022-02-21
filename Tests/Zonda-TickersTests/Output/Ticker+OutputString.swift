@@ -17,7 +17,7 @@ final class Ticker_OutputString: XCTestCase {
                             volume: 7777.777,
                             average: 8888.888)
         
-        let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: usedLocale)
+        let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: Locale.americanEnglish)
         
         XCTAssertEqual("Ticker: BTC-PLN, highest bid: 1,111.11 PLN, lowest ask: 2,222.22 PLN, rate: 3,333.33 PLN, previous rate: 4,444.44 PLN, highest rate: 5,555.56 PLN, lowest rate: 6,666.67 PLN, volume: 7,777.777, average: 8,888.89 PLN", outputString)
     }
@@ -35,7 +35,7 @@ final class Ticker_OutputString: XCTestCase {
                             volume: nil,
                             average: nil)
         
-        let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: usedLocale)
+        let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: Locale.americanEnglish)
         
         XCTAssertEqual("Ticker: BTC-PLN, highest bid: - PLN, lowest ask: - PLN, rate: - PLN, previous rate: - PLN, highest rate: - PLN, lowest rate: - PLN, volume: -, average: - PLN", outputString)
     }
@@ -43,7 +43,5 @@ final class Ticker_OutputString: XCTestCase {
     // MARK: - Helpers
     
     private let usedPrintArguments: [PrintArgument] = [.highestBid, .lowestAsk, .rate, .previousRate, .highestRate, .lowestRate, .volume, .average]
-    
-    private let usedLocale = Locale(identifier: "en-US")
     
 }

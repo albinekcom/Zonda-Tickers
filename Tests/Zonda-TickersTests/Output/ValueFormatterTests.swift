@@ -3,7 +3,7 @@ import XCTest
 
 final class ValueFormatterTests: XCTestCase {
     
-    private var sut = ValueFormatter(locale: Locale(identifier: "en-US"))
+    private var sut = ValueFormatter(locale: Locale.americanEnglish)
     
     // MARK: - Tests
     
@@ -20,7 +20,7 @@ final class ValueFormatterTests: XCTestCase {
     }
     
     func test_string_fromNormalValue_withCustomNumberFormatter() {
-        sut = ValueFormatter(locale: Locale(identifier: "en-US"), numberFormatterType: CustomNumberFormatterStub.self)
+        sut = ValueFormatter(locale: Locale.americanEnglish, numberFormatterType: CustomNumberFormatterStub.self)
         
         XCTAssertEqual("-", sut.string(from: 123456.789))
     }
