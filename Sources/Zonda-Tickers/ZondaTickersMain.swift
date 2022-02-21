@@ -17,7 +17,6 @@ struct ZondaTickersMain {
     
 }
 
-// TODO: Add unit tests for "Ticker+OutputString"
 // TODO: Add unit tests for "Ticker+InitFromAPIResponses"
 // TODO: Add unit tests for "UserArguments"
 // TODO: Add unit tests for "RemoteTickersRepository"

@@ -7,19 +7,19 @@ final class ValueFormatterTests: XCTestCase {
     
     // MARK: - Tests
     
-    func test_stringFromNil() {
+    func test_string_fromNil() {
         XCTAssertEqual("-", sut.string(from: nil))
     }
     
-    func test_stringFromNormalValue() {
+    func test_string_fromNormalValue() {
         XCTAssertEqual("123,456.789", sut.string(from: 123456.789))
     }
     
-    func test_stringFromNormalValue_WithSpecificFractionDigits() {
+    func test_string_fromNormalValue_withSpecificFractionDigits() {
         XCTAssertEqual("123,456.79", sut.string(from: 123456.789, fractionDigits: 2))
     }
     
-    func test_stringFromNormalValue_WithCustomNumberFormatter() {
+    func test_string_fromNormalValue_withCustomNumberFormatter() {
         sut = ValueFormatter(locale: Locale(identifier: "en-US"), numberFormatterType: CustomNumberFormatterStub.self)
         
         XCTAssertEqual("-", sut.string(from: 123456.789))
