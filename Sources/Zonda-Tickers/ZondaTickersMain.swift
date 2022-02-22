@@ -19,3 +19,11 @@ struct ZondaTickersMain {
     }
     
 }
+
+private struct SystemPrinter: Printer {
+    
+    static func display(text: String) {
+        print(text)
+    }
+    
+}
