@@ -7,7 +7,7 @@ final class Ticker_OutputString: XCTestCase {
     
     func test_outputString_forTickerWithFilledValues() {
         let ticker = Ticker(id: "btc-pln",
-                            counterCurrencyScale: 2,
+                            counterCurrencyFractionDigits: 2,
                             highestBid: 1111.111,
                             lowestAsk: 2222.222,
                             rate: 3333.333,
@@ -15,17 +15,18 @@ final class Ticker_OutputString: XCTestCase {
                             highestRate: 5555.555,
                             lowestRate: 6666.666,
                             volume: 7777.777,
+                            volumeFractionDigits: 2,
                             average: 8888.888)
         
         let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: Locale.americanEnglish)
         
-        XCTAssertEqual("Ticker: BTC-PLN, highest bid: 1,111.11 PLN, lowest ask: 2,222.22 PLN, rate: 3,333.33 PLN, previous rate: 4,444.44 PLN, highest rate: 5,555.56 PLN, lowest rate: 6,666.67 PLN, volume: 7,777.777, average: 8,888.89 PLN", outputString)
+        XCTAssertEqual("Ticker: BTC-PLN, highest bid: 1,111.11 PLN, lowest ask: 2,222.22 PLN, rate: 3,333.33 PLN, previous rate: 4,444.44 PLN, highest rate: 5,555.56 PLN, lowest rate: 6,666.67 PLN, volume: 7,777.78, average: 8,888.89 PLN", outputString)
     }
     
     
     func test_outputString_forTickerWithEmptyValues() {
         let ticker = Ticker(id: "btc-pln",
-                            counterCurrencyScale: 2,
+                            counterCurrencyFractionDigits: 2,
                             highestBid: nil,
                             lowestAsk: nil,
                             rate: nil,
@@ -33,6 +34,7 @@ final class Ticker_OutputString: XCTestCase {
                             highestRate: nil,
                             lowestRate: nil,
                             volume: nil,
+                            volumeFractionDigits: 2,
                             average: nil)
         
         let outputString = ticker.outputString(printArguments: usedPrintArguments, locale: Locale.americanEnglish)

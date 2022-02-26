@@ -23,7 +23,7 @@ final class TickerTests: XCTestCase {
         let ticker = Ticker(id: "btc-pln", apiTickerValuesItem: nil, apiTickerStatisticsItem: nil)
         
         XCTAssertEqual("btc-pln", ticker.id)
-        XCTAssertEqual(2, ticker.counterCurrencyScale)
+        XCTAssertEqual(2, ticker.counterCurrencyFractionDigits)
         XCTAssertNil(ticker.highestBid)
         XCTAssertNil(ticker.lowestAsk)
         XCTAssertNil(ticker.rate)
@@ -31,6 +31,7 @@ final class TickerTests: XCTestCase {
         XCTAssertNil(ticker.highestRate)
         XCTAssertNil(ticker.lowestRate)
         XCTAssertNil(ticker.volume)
+        XCTAssertEqual(2, ticker.volumeFractionDigits)
         XCTAssertNil(ticker.average)
     }
     
@@ -51,7 +52,7 @@ final class TickerTests: XCTestCase {
                                                            r24h: "888.888"))
         
         XCTAssertEqual("btc-pln", ticker.id)
-        XCTAssertEqual(3, ticker.counterCurrencyScale)
+        XCTAssertEqual(3, ticker.counterCurrencyFractionDigits)
         XCTAssertEqual(111.111, ticker.highestBid)
         XCTAssertEqual(222.222, ticker.lowestAsk)
         XCTAssertEqual(333.333, ticker.rate)
@@ -59,6 +60,7 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual(555.555, ticker.highestRate)
         XCTAssertEqual(666.666, ticker.lowestRate)
         XCTAssertEqual(777.777, ticker.volume)
+        XCTAssertEqual(3, ticker.volumeFractionDigits)
         XCTAssertEqual(888.888, ticker.average)
     }
     

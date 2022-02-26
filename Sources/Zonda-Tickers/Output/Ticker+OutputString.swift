@@ -21,42 +21,42 @@ extension Ticker {
         switch printArgument {
         case .highestBid:
             return .init(title: "highest bid",
-                         valueString: valueFormatter.string(from: ticker.highestBid, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.highestBid, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .lowestAsk:
             return .init(title: "lowest ask",
-                         valueString: valueFormatter.string(from: ticker.lowestAsk, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.lowestAsk, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .rate:
             return .init(title: "rate",
-                         valueString: valueFormatter.string(from: ticker.rate, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.rate, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .previousRate:
             return .init(title: "previous rate",
-                         valueString: valueFormatter.string(from: ticker.previousRate, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.previousRate, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .highestRate:
             return .init(title: "highest rate",
-                         valueString: valueFormatter.string(from: ticker.highestRate, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.highestRate, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .lowestRate:
             return .init(title: "lowest rate",
-                         valueString: valueFormatter.string(from: ticker.lowestRate, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.lowestRate, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .volume:
             return .init(title: "volume",
-                         valueString: valueFormatter.string(from: ticker.volume),
+                         valueString: valueFormatter.string(from: ticker.volume, fractionDigits: ticker.volumeFractionDigits),
                          counterCurrencyAddedAtTheEnd: nil)
 
         case .average:
             return .init(title: "average",
-                         valueString: valueFormatter.string(from: ticker.average, fractionDigits: ticker.counterCurrencyScale),
+                         valueString: valueFormatter.string(from: ticker.average, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
         }
     }
