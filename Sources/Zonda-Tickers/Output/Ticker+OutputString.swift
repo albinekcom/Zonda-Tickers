@@ -7,15 +7,16 @@ extension Ticker {
         
         outputs.append("Ticker: \(id.uppercased())")
         
-        outputs += printArguments.map {
-            outputComponent(ticker: self, printArgument: $0, locale: locale).description
+        outputs += printArguments.compactMap {
+            outputComponent(ticker: self, printArgument: $0, locale: locale)?.description
         }
         
         return outputs.joined(separator: ", ")
     }
     
-    private func outputComponent(ticker: Ticker, printArgument: PrintArgument, locale: Locale) -> OutputComponent {
-        let counterCurrencyAddedAtTheEnd = ticker.counterCurrencyId?.uppercased()
+    private func outputComponent(ticker: Ticker, printArgument: PrintArgument, locale: Locale) -> OutputComponent? {
+        guard let counterCurrencyAddedAtTheEnd = ticker.counterCurrencyId?.uppercased() else { return nil }
+        
         let valueFormatter = ValueFormatter(locale: locale)
         
         switch printArgument {
@@ -51,8 +52,8 @@ extension Ticker {
 
         case .volume:
             return .init(title: "volume",
-                         valueString: valueFormatter.string(from: ticker.volume, fractionDigits: ticker.volumeFractionDigits),
-                         counterCurrencyAddedAtTheEnd: nil)
+                         valueString: valueFormatter.string(from: ticker.volume, fractionDigits: ticker.counterCurrencyFractionDigits),
+                         counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .average:
             return .init(title: "average",
@@ -67,14 +68,12 @@ private struct OutputComponent {
     
     let title: String
     let valueString: String
-    let counterCurrencyAddedAtTheEnd: String?
+    let counterCurrencyAddedAtTheEnd: String
     
     var description: String {
         var description = "\(title): \(valueString)"
 
-        if let counterCurrencyAddedAtTheEnd = counterCurrencyAddedAtTheEnd {
-            description += " \(counterCurrencyAddedAtTheEnd)"
-        }
+        description += " \(counterCurrencyAddedAtTheEnd)"
 
         return description
     }

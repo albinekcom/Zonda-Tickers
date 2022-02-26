@@ -31,7 +31,6 @@ final class TickerTests: XCTestCase {
         XCTAssertNil(ticker.highestRate)
         XCTAssertNil(ticker.lowestRate)
         XCTAssertNil(ticker.volume)
-        XCTAssertEqual(2, ticker.volumeFractionDigits)
         XCTAssertNil(ticker.average)
     }
     
@@ -60,7 +59,6 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual(555.555, ticker.highestRate)
         XCTAssertEqual(666.666, ticker.lowestRate)
         XCTAssertEqual(777.777, ticker.volume)
-        XCTAssertEqual(3, ticker.volumeFractionDigits)
         XCTAssertEqual(888.888, ticker.average)
     }
     

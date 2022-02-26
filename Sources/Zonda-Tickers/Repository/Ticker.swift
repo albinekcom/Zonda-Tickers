@@ -11,7 +11,6 @@ struct Ticker {
     let highestRate: Double?
     let lowestRate: Double?
     let volume: Double?
-    let volumeFractionDigits: Int
     let average: Double?
     
 }
@@ -32,7 +31,6 @@ extension Ticker {
         highestRate = apiTickerStatisticsItem?.h.double
         lowestRate = apiTickerStatisticsItem?.l.double
         volume = apiTickerStatisticsItem?.v.double
-        volumeFractionDigits = apiTickerStatisticsItem?.v?.components(separatedBy: ".").last?.count ?? 2
         average = apiTickerStatisticsItem?.r24h.double
     }
     
