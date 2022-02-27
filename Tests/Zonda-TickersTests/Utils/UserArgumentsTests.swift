@@ -53,6 +53,10 @@ final class UserArgumentsTests: XCTestCase {
         let ua8 = UserArguments(argumentStrings: ["--average"])
         XCTAssertFalse(ua8.shouldLoadValues)
         XCTAssertTrue(ua8.shouldLoadStatistics)
+        
+        let ua9 = UserArguments(argumentStrings: ["--change"])
+        XCTAssertTrue(ua9.shouldLoadValues)
+        XCTAssertTrue(ua9.shouldLoadStatistics)
     }
     
     // MARK: - Helpers

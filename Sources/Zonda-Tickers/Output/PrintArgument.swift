@@ -8,5 +8,6 @@ enum PrintArgument: String {
     case lowestRate
     case volume
     case average
+    case change
     
 }

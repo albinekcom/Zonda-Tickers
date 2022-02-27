@@ -59,6 +59,11 @@ extension Ticker {
             return .init(title: "average",
                          valueString: valueFormatter.string(from: ticker.average, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
+            
+        case .change:
+            return .init(title: "change",
+                         valueString: valueFormatter.string(from: ticker.change, fractionDigits: 2, numberStyle: .percent),
+                         counterCurrencyAddedAtTheEnd: nil)
         }
     }
     
@@ -68,12 +73,14 @@ private struct OutputComponent {
     
     let title: String
     let valueString: String
-    let counterCurrencyAddedAtTheEnd: String
+    let counterCurrencyAddedAtTheEnd: String?
     
     var description: String {
         var description = "\(title): \(valueString)"
-
-        description += " \(counterCurrencyAddedAtTheEnd)"
+        
+        if let counterCurrencyAddedAtTheEnd = counterCurrencyAddedAtTheEnd {
+            description += " \(counterCurrencyAddedAtTheEnd)"
+        }
 
         return description
     }

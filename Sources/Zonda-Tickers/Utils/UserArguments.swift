@@ -21,11 +21,11 @@ struct UserArguments {
 extension UserArguments {
     
     var shouldLoadValues: Bool {
-        userPrintArgumentsContainsAtLeastOne(of: [.highestBid, .lowestAsk, .rate, .previousRate])
+        userPrintArgumentsContainsAtLeastOne(of: [.highestBid, .lowestAsk, .rate, .previousRate, .change])
     }
     
     var shouldLoadStatistics: Bool {
-        userPrintArgumentsContainsAtLeastOne(of: [.highestRate, .lowestRate, .volume, .average])
+        userPrintArgumentsContainsAtLeastOne(of: [.highestRate, .lowestRate, .volume, .average, .change])
     }
     
     private func userPrintArgumentsContainsAtLeastOne(of otherPrintArguments: [PrintArgument]) -> Bool {
