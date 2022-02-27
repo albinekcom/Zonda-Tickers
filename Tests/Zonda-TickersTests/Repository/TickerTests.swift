@@ -31,6 +31,8 @@ final class TickerTests: XCTestCase {
         XCTAssertNil(ticker.highestRate)
         XCTAssertNil(ticker.lowestRate)
         XCTAssertNil(ticker.volume)
+        XCTAssertEqual(2, ticker.volumeFractionDigits)
+        XCTAssertNil(ticker.volumeValue)
         XCTAssertNil(ticker.average)
         XCTAssertNil(ticker.change)
     }
@@ -59,9 +61,11 @@ final class TickerTests: XCTestCase {
         XCTAssertEqual(444.444, ticker.previousRate)
         XCTAssertEqual(555.555, ticker.highestRate)
         XCTAssertEqual(666.666, ticker.lowestRate)
-        XCTAssertEqual(259258.74074100005, ticker.volume)
+        XCTAssertEqual(777.777, ticker.volume)
+        XCTAssertEqual(3, ticker.volumeFractionDigits)
+        XCTAssertEqual(259258.74074100005, ticker.volumeValue)
         XCTAssertEqual(888.888, ticker.average)
-        XCTAssertEqual(-1.6666666666666667, ticker.change)
+        XCTAssertEqual(-0.625, ticker.change)
     }
     
     // MARK: - Helpers

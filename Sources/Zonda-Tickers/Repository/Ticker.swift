@@ -11,13 +11,25 @@ struct Ticker {
     let highestRate: Double?
     let lowestRate: Double?
     let volume: Double?
+    let volumeFractionDigits: Int
     let average: Double?
+    
+}
+
+extension Ticker {
+    
+    var volumeValue: Double? {
+        guard let volume = volume,
+              let rate = rate else { return nil }
+        
+        return volume * rate
+    }
     
     var change: Double? {
         guard let average = average,
               let rate = rate else { return nil }
         
-        return (rate - average) / rate
+        return (rate - average) / average
     }
     
 }
@@ -38,13 +50,8 @@ extension Ticker {
         highestRate = apiTickerStatisticsItem?.h.double
         lowestRate = apiTickerStatisticsItem?.l.double
         average = apiTickerStatisticsItem?.r24h.double
-        
-        if let volume = apiTickerStatisticsItem?.v.double,
-           let rate = rate {
-            self.volume = volume * rate
-        } else {
-            volume = nil
-        }
+        volume = apiTickerStatisticsItem?.v.double
+        volumeFractionDigits = apiTickerStatisticsItem?.v?.components(separatedBy: ".").last?.count ?? 2
     }
     
 }

@@ -52,7 +52,12 @@ extension Ticker {
 
         case .volume:
             return .init(title: "volume",
-                         valueString: valueFormatter.string(from: ticker.volume, fractionDigits: ticker.counterCurrencyFractionDigits),
+                         valueString: valueFormatter.string(from: ticker.volume, fractionDigits: ticker.volumeFractionDigits),
+                         counterCurrencyAddedAtTheEnd: nil)
+            
+        case .volumeValue:
+            return .init(title: "volume value",
+                         valueString: valueFormatter.string(from: ticker.volumeValue, fractionDigits: ticker.counterCurrencyFractionDigits),
                          counterCurrencyAddedAtTheEnd: counterCurrencyAddedAtTheEnd)
 
         case .average:
