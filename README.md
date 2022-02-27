@@ -26,3 +26,4 @@ $ swift run Zonda-Tickers BTC-PLN ETH-PLN --lowestAsk --rate
 - `--lowestRate`
 - `--volume`
 - `--average`
+- `--change`
