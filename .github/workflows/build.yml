@@ -9,9 +9,11 @@ on:
 jobs:
   build:
 
-    runs-on: macos-12
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Run tests
-      run: swift test
+      run: swift test --enable-code-coverage
+    - name: Code coverage
+      uses: maxep/spm-lcov-action@0.3.1
