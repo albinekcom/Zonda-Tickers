@@ -2,34 +2,14 @@ import Foundation
 
 struct UserArguments {
     
-    private let userArgumentStrings: [String]
+    let tickerIds: [String]
+    let printArguments: [PrintArgument]
     
-    init(argumentStrings: [String]) {
-        userArgumentStrings = argumentStrings
-    }
-    
-    var tickerIds: [String] {
-        userArgumentStrings.compactMap { $0.isTickerId ? $0.lowercased() : nil }
-    }
-    
-    var printArguments: [PrintArgument] {
-        userArgumentStrings.compactMap { PrintArgument(rawValue: String($0.dropFirst(2))) }
-    }
-    
-}
-
-extension UserArguments {
-    
-    var shouldLoadValues: Bool {
-        userPrintArgumentsContainsAtLeastOne(of: [.highestBid, .lowestAsk, .rate, .volumeValue, .previousRate, .change])
-    }
-    
-    var shouldLoadStatistics: Bool {
-        userPrintArgumentsContainsAtLeastOne(of: [.highestRate, .lowestRate, .volume, .volumeValue, .average, .change])
-    }
-    
-    private func userPrintArgumentsContainsAtLeastOne(of otherPrintArguments: [PrintArgument]) -> Bool {
-        Set(printArguments).intersection(otherPrintArguments).isEmpty == false
+    init(argumentStrings: [String] = Array(CommandLine.arguments.dropFirst())) {
+        tickerIds = argumentStrings.compactMap { $0.isTickerId ? $0.lowercased() : nil }
+        printArguments = argumentStrings
+            .compactMap { PrintArgument(rawValue: String($0.dropFirst(2))) }
+            .uniqued()
     }
     
 }
@@ -40,6 +20,16 @@ private extension String {
         guard let regex = try? NSRegularExpression(pattern: #"^[^-]+-[^-]+$"#) else { return false }
 
         return regex.firstMatch(in: self, range: NSRange(location: 0, length: count)) != nil
+    }
+    
+}
+
+private extension Array where Element: Hashable {
+    
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        
+        return filter { set.insert($0).inserted }
     }
     
 }

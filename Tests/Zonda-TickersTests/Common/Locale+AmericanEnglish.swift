@@ -2,6 +2,6 @@ import Foundation
 
 extension Locale {
     
-    static var americanEnglish: Locale { .init(identifier: "en-US") }
+    static let americanEnglish = Locale(identifier: "en-US")
     
 }

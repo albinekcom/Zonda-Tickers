@@ -1,14 +1,14 @@
 enum PrintArgument: String {
     
-    case highestBid
-    case lowestAsk
-    case rate
-    case previousRate
-    case highestRate
-    case lowestRate
-    case volume
-    case volumeValue
     case average
     case change
+    case highestBid
+    case highestRate
+    case lowestAsk
+    case lowestRate
+    case previousRate
+    case rate
+    case volume
+    case volumeValue
     
 }

@@ -1,5 +1,5 @@
 protocol Printer {
     
-    static func display(text: String)
+    func display(text: String)
     
 }

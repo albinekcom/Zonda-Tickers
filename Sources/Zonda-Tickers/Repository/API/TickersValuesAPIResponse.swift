@@ -29,4 +29,5 @@ struct TickersValuesAPIResponse: Decodable {
     let status: String
     
     let items: [String: Item]
+    
 }
